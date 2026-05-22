@@ -4,6 +4,7 @@ import { gql } from "@apollo/client"
 import { useQuery, useMutation } from "@apollo/client/react"
 import GameCard from './components/GameCard'
 import AddGameForm from './components/AddGameForm'
+import GameList from './components/GameList'
 
 const GET_GAMES = gql`
   query GetGames {
@@ -67,15 +68,7 @@ function App() {
 
       <AddGameForm onAdd={handleAddGame} />
 
-      <div className="grid">
-        {data.games.map(game => (
-          <GameCard
-            key={game.id}
-            game={game}
-            onDelete={handleDelete}
-          />
-        ))}
-      </div>
+      <GameList games={data.games} onDelete={handleDelete} />
     </div>
   )
 }
