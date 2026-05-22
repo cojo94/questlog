@@ -1,48 +1,15 @@
-import { useState } from 'react'
 import './App.css'
-import { useQuery, useMutation } from "@apollo/client/react"
-import GameCard from './components/GameCard'
-import AddGameForm from './components/AddGameForm'
-import GameList from './components/GameList'
-import { GET_GAMES } from './graphql/queries'
-import { ADD_GAME, DELETE_GAME } from './graphql/mutations'
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import GameDetails from './pages/GameDetails'
 
 function App() {
-  const { loading, error, data } = useQuery(GET_GAMES)
-  const [addGame] = useMutation(ADD_GAME)
-  const [deleteGame] = useMutation(DELETE_GAME)
-
-  const handleAddGame = ({ title, platform }) => {
-    addGame({
-      variables: {
-        game: {
-          title,
-          platform: platform.split(",").map(p => p.trim())
-        }
-      },
-      refetchQueries: [{ query: GET_GAMES }]
-    })
-  }
-
-  const handleDelete = (id) => {
-    deleteGame({
-      variables: { id },
-      refetchQueries: [{ query: GET_GAMES }]
-    })
-  }
-
-  if (loading) return <h2>Loading...</h2>
-  if (error) return <h2>{error.message}</h2>
 
   return (
-    <div className="container">
-      <h1>🎮 Games Library</h1>
-      <p>{data.games.length} games in the library</p>
-
-      <AddGameForm onAdd={handleAddGame} />
-
-      <GameList games={data.games} onDelete={handleDelete} />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/game/:id" element={<GameDetails />} />
+    </Routes>
   )
 }
 
