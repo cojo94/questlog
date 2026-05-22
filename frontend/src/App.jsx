@@ -1,38 +1,11 @@
 import { useState } from 'react'
 import './App.css'
-import { gql } from "@apollo/client"
 import { useQuery, useMutation } from "@apollo/client/react"
 import GameCard from './components/GameCard'
 import AddGameForm from './components/AddGameForm'
 import GameList from './components/GameList'
-
-const GET_GAMES = gql`
-  query GetGames {
-    games {
-      id
-      title
-      platform
-    }
-  }
-`
-
-const ADD_GAME = gql`
-  mutation AddGame($game: AddGameInput!) {
-    addGame(game: $game) {
-      id
-      title
-      platform
-    }
-  }
-`
-
-const DELETE_GAME = gql`
-  mutation DeleteGame($id: ID!) {
-    deleteGame(id: $id) {
-      id
-    }
-  }
-`
+import { GET_GAMES } from './graphql/queries'
+import { ADD_GAME, DELETE_GAME } from './graphql/mutations'
 
 function App() {
   const { loading, error, data } = useQuery(GET_GAMES)
