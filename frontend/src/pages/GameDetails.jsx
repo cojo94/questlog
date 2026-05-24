@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom"
-import { useQuery } from "@apollo/client/react"
+import { useQuery, useMutation } from "@apollo/client/react"
 import { GET_GAME } from "../graphql/queries"
+import { ADD_REVIEW } from "../graphql/mutations"
 import ReviewCard from "../components/ReviewCard"
+import AddReviewForm from "../components/AddReviewForm"
 
 function GameDetails() {
     const { id } = useParams()
@@ -9,6 +11,22 @@ function GameDetails() {
     const { loading, error, data } = useQuery(GET_GAME, {
         variables: { id }
     })
+
+    const [addReview] = useMutation(ADD_REVIEW)
+
+    const handleAddReview = ({ rating, content }) => {
+        addReview({
+            variables: {
+                review: {
+                    rating,
+                    content,
+                    game_id: id,
+                    author_id: 1 // TODO: replace with actual user id
+                }
+            },
+            refetchQueries: [{ query: GET_GAME, variables: { id } }]
+        })
+    }
 
     if (loading) return <h2>Loading...</h2>
     if (error) return <h2>Error: {error.message}</h2>
@@ -24,6 +42,8 @@ function GameDetails() {
             </p>
 
             <h3>Reviews</h3>
+
+            <AddReviewForm onAddReview={handleAddReview} />
 
             {game.reviews.length === 0 && (
                 <p>No reviews yet</p>

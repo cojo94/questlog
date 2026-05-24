@@ -27,3 +27,16 @@ export const UPDATE_GAME = gql`
     }
   }
 `
+
+export const ADD_REVIEW = gql`
+  mutation AddReview($review: AddReviewInput!) {
+    addReview(review: $review) {
+      id
+      rating
+      content
+      author {
+        name
+      }
+    }
+  }
+`

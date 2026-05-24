@@ -63,6 +63,14 @@ const resolvers = {
                 return g
             })
             return _db.games.find((g) => g.id === args.id)
+        },
+        addReview(_, args) {
+            let review = {
+                ...args.review,
+                id: Math.floor(Math.random() * 10000).toString()
+            }
+            _db.reviews.push(review)
+            return review
         }
     }
 }
