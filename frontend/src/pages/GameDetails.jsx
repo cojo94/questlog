@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useQuery, useMutation } from "@apollo/client/react"
-import { GET_GAME } from "../graphql/queries"
+import { GET_GAME, GET_AUTHORS } from "../graphql/queries"
 import { ADD_REVIEW } from "../graphql/mutations"
 import ReviewCard from "../components/ReviewCard"
 import AddReviewForm from "../components/AddReviewForm"
@@ -12,24 +12,27 @@ function GameDetails() {
         variables: { id }
     })
 
+    const { loading: authorsLoading, error: authorsError, data: authorsData } = useQuery(GET_AUTHORS)
+
     const [addReview] = useMutation(ADD_REVIEW)
 
-    const handleAddReview = ({ rating, content }) => {
+    const handleAddReview = ({ rating, content, author_id }) => {
         addReview({
             variables: {
                 review: {
                     rating,
                     content,
                     game_id: id,
-                    author_id: 1 // TODO: replace with actual user id
+                    author_id
                 }
             },
             refetchQueries: [{ query: GET_GAME, variables: { id } }]
         })
     }
 
-    if (loading) return <h2>Loading...</h2>
+    if (loading || authorsLoading) return <h2>Loading...</h2>
     if (error) return <h2>Error: {error.message}</h2>
+    if (authorsError) return <h2>Error: {authorsError.message}</h2>
 
     const game = data.game
 
@@ -43,7 +46,7 @@ function GameDetails() {
 
             <h3>Reviews</h3>
 
-            <AddReviewForm onAddReview={handleAddReview} />
+            <AddReviewForm onAddReview={handleAddReview} authors={authorsData?.authors || []} />
 
             {game.reviews.length === 0 && (
                 <p>No reviews yet</p>

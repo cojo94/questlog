@@ -27,3 +27,13 @@ export const GET_GAME = gql`
     }
   }
 `
+
+export const GET_AUTHORS = gql`
+  query GetAuthors {
+    authors {
+      id
+      name
+      verified
+    }
+  }
+`
