@@ -5,7 +5,8 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  width: 90%;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 30px;
   font-family: Arial, sans-serif;
@@ -17,18 +18,42 @@ body {
   margin-bottom: 25px;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #181818;
+  padding: 20px 40px;
+  border-bottom: 1px solid #2d2d2d;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
 h1 {
   text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -1px;
   margin-bottom: 30px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
 }
 
 .card {
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
   background: #1e1e1e;
   color: white;
   padding: 15px;
@@ -42,21 +67,53 @@ h1 {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
 }
 
+.card h2 {
+  color: #4caf50;
+}
+
 .platform {
   font-size: 14px;
   opacity: 0.7;
   margin-top: 5px;
 }
 
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.edit,
 .delete {
-  margin-top: 15px;
-  background: #e74c3c;
-  border: none;
-  padding: 8px 10px;
-  color: white;
-  border-radius: 6px;
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
   cursor: pointer;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.edit {
+  background: #2d2d2d;
+  color: white;
+  border: 1px solid #444;
+  transition: all 0.2s ease;
+}
+
+.edit:hover {
+  background: #3a3a3a;
+}
+
+.delete {
+  background: transparent;
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+  transition: all 0.2s ease;
 }
 
 .delete:hover {
@@ -64,6 +121,9 @@ h1 {
 }
 
 form {
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
   display: flex;
   gap: 10px;
   margin-bottom: 30px;
