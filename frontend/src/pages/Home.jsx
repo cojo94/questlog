@@ -29,7 +29,7 @@ function Home() {
     }
 
     if (loading) return <h2>Loading...</h2>
-    if (error) return <h2>{error.message}</h2>
+    if (error) return <h2>Error: {error.message}</h2>
 
     return (
         <div className="container">

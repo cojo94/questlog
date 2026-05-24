@@ -20,6 +20,9 @@ export const GET_GAME = gql`
         id
         rating
         content
+        author {
+          name
+        }
       }
     }
   }

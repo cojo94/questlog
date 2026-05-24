@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useQuery } from "@apollo/client/react"
-
 import { GET_GAME } from "../graphql/queries"
+import ReviewCard from "../components/ReviewCard"
 
 function GameDetails() {
     const { id } = useParams()
@@ -11,7 +11,7 @@ function GameDetails() {
     })
 
     if (loading) return <h2>Loading...</h2>
-    if (error) return <h2>{error.message}</h2>
+    if (error) return <h2>Error: {error.message}</h2>
 
     const game = data.game
 
@@ -30,10 +30,7 @@ function GameDetails() {
             )}
 
             {game.reviews.map(review => (
-                <div key={review.id} className="card">
-                    <p>Rating: {review.rating}/10</p>
-                    <p>{review.content}</p>
-                </div>
+                <ReviewCard key={review.id} review={review} />
             ))}
         </div>
     )
