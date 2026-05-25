@@ -1,9 +1,10 @@
 let games = [
-    { id: '1', title: 'Zelda, Tears of the Kingdom', platform: ['Switch'] },
-    { id: '2', title: 'Final Fantasy 7 Remake', platform: ['PS5', 'Xbox'] },
-    { id: '3', title: 'Elden Ring', platform: ['PS5', 'Xbox', 'PC'] },
-    { id: '4', title: 'Mario Kart', platform: ['Switch'] },
-    { id: '5', title: 'Pokemon Scarlet', platform: ['PS5', 'Xbox', 'PC'] },
+    { id: '1', title: "Baldur's Gate 3", platform: ["PC", "Xbox", "PS5"], status: "Playing" },
+    { id: '2', title: "Dispatch", platform: ["PC", "PS5", "Xbox"], status: "Completed" },
+    { id: '3', title: "Elden Ring", platform: ["PS5", "Xbox", "PC"], status: "Not Started" },
+    { id: '4', title: "Mario Kart", platform: ["Switch"], status: "Playing" },
+    { id: '5', title: "Pokemon Scarlet", platform: ["PS5", "Xbox", "PC"], status: "Not Started" },
+    { id: '6', title: "Cyberpunk 2077", platform: ["PC", "PS5", "Xbox"], status: "Completed" },
 ]
 
 let authors = [
@@ -20,7 +21,7 @@ let reviews = [
     { id: '4', rating: 5, content: 'lorem ipsum', author_id: '2', game_id: '4' },
     { id: '5', rating: 8, content: 'lorem ipsum', author_id: '2', game_id: '5' },
     { id: '6', rating: 7, content: 'lorem ipsum', author_id: '1', game_id: '2' },
-    { id: '7', rating: 10, content: 'lorem ipsum', author_id: '3', game_id: '1' },
+    { id: '7', rating: 10, content: 'lorem ipsum', author_id: '3', game_id: '6' },
 ]
 
 export default { games, authors, reviews }

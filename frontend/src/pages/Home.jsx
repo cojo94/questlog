@@ -11,13 +11,15 @@ function Home() {
     const [deleteGame] = useMutation(DELETE_GAME)
     const [searchTerm, setSearchTerm] = useState("")
     const [platformFilter, setPlatformFilter] = useState("all") // "all" means no filter, or show all platforms
+    const [statusFilter, setStatusFilter] = useState("all")
 
-    const handleAddGame = ({ title, platform }) => {
+    const handleAddGame = ({ title, platform, status }) => {
         addGame({
             variables: {
                 game: {
                     title,
-                    platform: platform.split(",").map(p => p.trim())
+                    platform: platform.split(",").map(p => p.trim()),
+                    status
                 }
             },
             refetchQueries: [{ query: GET_GAMES }]
@@ -46,12 +48,17 @@ function Home() {
             platformFilter === "all" ||
             game.platform.includes(platformFilter)
 
-        return matchesSearch && matchesPlatform
+        const matchesStatus =
+            statusFilter === "all" ||
+            game.status === statusFilter
+
+        return matchesSearch && matchesPlatform && matchesStatus
     })
 
     const clearFilters = () => {
         setSearchTerm("")
         setPlatformFilter("all")
+        setStatusFilter("all")
     }
 
     return (
@@ -82,7 +89,18 @@ function Home() {
                     ))}
                 </select>
 
-                <button onClick={clearFilters} disabled={searchTerm === "" && platformFilter === "all"}>
+                <select
+                    value={statusFilter}
+                    onChange={(e) => setStatusFilter(e.target.value)}
+                >
+                    <option value="all">All Statuses</option>
+                    <option value="Not Started">Not Started</option>
+                    <option value="Playing">Playing</option>
+                    <option value="Completed">Completed</option>
+
+                </select>
+
+                <button onClick={clearFilters} disabled={searchTerm === "" && platformFilter === "all" && statusFilter === "all"}>
                     Clear
                 </button>
             </div>

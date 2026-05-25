@@ -6,6 +6,7 @@ export const ADD_GAME = gql`
       id
       title
       platform
+      status
     }
   }
 `
@@ -24,6 +25,7 @@ export const UPDATE_GAME = gql`
       id
       title
       platform
+      status
     }
   }
 `

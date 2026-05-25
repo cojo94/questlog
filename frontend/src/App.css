@@ -134,6 +134,12 @@ form {
   margin-bottom: 28px;
 }
 
+.form-fields {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+}
+
 form input,
 form select {
   flex: 1;

@@ -6,6 +6,7 @@ export const GET_GAMES = gql`
       id
       title
       platform
+      status
     }
   }
 `

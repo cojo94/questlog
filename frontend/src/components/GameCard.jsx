@@ -10,6 +10,9 @@ function GameCard({ game, onDelete }) {
             <p className="platform">
                 Platform: {game.platform.join(", ")}
             </p>
+            <p className="status">
+                Status: {game.status}
+            </p>
             <div className="actions">
                 <Link to={`/game/${game.id}/edit`} className="edit">
                     Edit
