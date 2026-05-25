@@ -43,18 +43,20 @@ function GameDetails() {
             <p>
                 Platforms: {game.platform.join(", ")}
             </p>
+            <section className="details-section">
+                <h3>Reviews</h3>
 
-            <h3>Reviews</h3>
+                <AddReviewForm onAddReview={handleAddReview} authors={authorsData?.authors || []} />
+                <div className="review-list">
+                    {game.reviews.length === 0 && (
+                        <p>No reviews yet</p>
+                    )}
 
-            <AddReviewForm onAddReview={handleAddReview} authors={authorsData?.authors || []} />
-
-            {game.reviews.length === 0 && (
-                <p>No reviews yet</p>
-            )}
-
-            {game.reviews.map(review => (
-                <ReviewCard key={review.id} review={review} />
-            ))}
+                    {game.reviews.map(review => (
+                        <ReviewCard key={review.id} review={review} />
+                    ))}
+                </div>
+            </section>
         </div>
     )
 }

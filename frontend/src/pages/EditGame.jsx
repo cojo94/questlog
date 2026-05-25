@@ -44,9 +44,9 @@ function EditGame() {
     const game = data.game
 
     return (
-        <div className="container">
+        <div className="container edit-page">
             <h1>Edit {game.title}</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="edit-form">
                 <input
                     placeholder="Game title"
                     value={title}
