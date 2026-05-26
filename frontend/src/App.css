@@ -137,6 +137,26 @@ h4 {
   border-color: rgba(255, 183, 77, 0.35);
 }
 
+.xp-progress-outer {
+  width: 100%;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+
+.xp-progress-inner {
+  height: 100%;
+  background: var(--accent);
+  color: white;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  transition: width 0.3s ease;
+}
+
 /* Shared form controls */
 
 input,

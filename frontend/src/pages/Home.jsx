@@ -42,6 +42,14 @@ function Home() {
     const completedGames = data.games.filter(game => game.status === "Completed").length
     const notStartedGames = data.games.filter(game => game.status === "Not Started").length
 
+    const xpFromCompleted = completedGames * 100
+    const xpFromPlaying = playingGames * 25 // Assuming 25 XP per game in progress
+    const totalXP = xpFromCompleted + xpFromPlaying
+    const level = Math.floor(totalXP / 500) + 1 // Level up every 500 XP
+    const currentLevelXP = totalXP % 500
+    const xpToNextLevel = 500 - currentLevelXP
+    const xpProgress = (currentLevelXP / 500) * 100
+
     const platforms = [...new Set(data.games.flatMap(game => game.platform))]
 
     const search = searchTerm.toLowerCase()
@@ -86,6 +94,18 @@ function Home() {
                 <div className="stat-card">
                     <p>Not Started: {notStartedGames}</p>
                 </div>
+            </div>
+            <div className="xp-card">
+                <h2 className="xp-level">Level: {level}</h2>
+                <p className="xp-next-level">{xpToNextLevel} XP to next level</p>
+
+                <div className="xp-progress-outer">
+                    <div className="xp-progress-inner" style={{ width: `${xpProgress}%` }}>
+                        {xpProgress.toFixed(0)}%
+                    </div>
+                </div>
+
+                <p className="xp-total">Total XP: {totalXP}</p>
             </div>
             <AddGameForm onAdd={handleAddGame} />
 
