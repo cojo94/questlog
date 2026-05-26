@@ -36,6 +36,12 @@ function Home() {
     if (loading) return <h2>Loading...</h2>
     if (error) return <h2>Error: {error.message}</h2>
 
+    const totalGames = data.games.length
+
+    const playingGames = data.games.filter(game => game.status === "Playing").length
+    const completedGames = data.games.filter(game => game.status === "Completed").length
+    const notStartedGames = data.games.filter(game => game.status === "Not Started").length
+
     const platforms = [...new Set(data.games.flatMap(game => game.platform))]
 
     const search = searchTerm.toLowerCase()
@@ -63,9 +69,24 @@ function Home() {
 
     return (
         <div className="container">
-            <h1>🎮 Games Library</h1>
-            <p>{data.games.length} games in the library</p>
-
+            <h1 className="page-title">QuestLog</h1>
+            <p className="subtitle">
+                Track your backlog. Complete games. Gain XP.
+            </p>
+            <div className="stats">
+                <div className="stat-card">
+                    <p>Total: {totalGames}</p>
+                </div>
+                <div className="stat-card">
+                    <p>Playing: {playingGames}</p>
+                </div>
+                <div className="stat-card">
+                    <p>Completed: {completedGames}</p>
+                </div>
+                <div className="stat-card">
+                    <p>Not Started: {notStartedGames}</p>
+                </div>
+            </div>
             <AddGameForm onAdd={handleAddGame} />
 
             <div className="filters">
