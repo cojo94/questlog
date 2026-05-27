@@ -5,6 +5,8 @@ import { ADD_GAME, DELETE_GAME } from '../graphql/mutations'
 import AddGameForm from '../components/AddGameForm'
 import GameList from '../components/GameList'
 import ProgressionHero from '../components/ProgressionHero'
+import StatsOverview from '../components/StatsOverview'
+import GameFilters from '../components/GameFilters'
 
 function Home() {
     const { loading, error, data } = useQuery(GET_GAMES)
@@ -13,6 +15,7 @@ function Home() {
     const [searchTerm, setSearchTerm] = useState("")
     const [platformFilter, setPlatformFilter] = useState("all") // "all" means no filter, or show all platforms
     const [statusFilter, setStatusFilter] = useState("all")
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false)
 
     const handleAddGame = ({ title, platform, status }) => {
         addGame({
@@ -43,8 +46,6 @@ function Home() {
     const completedGames = data.games.filter(game => game.status === "Completed").length
     const notStartedGames = data.games.filter(game => game.status === "Not Started").length
 
-
-
     const platforms = [...new Set(data.games.flatMap(game => game.platform))]
 
     const search = searchTerm.toLowerCase()
@@ -72,62 +73,47 @@ function Home() {
 
     return (
         <div className="container">
-
-
             <ProgressionHero completedGames={completedGames} playingGames={playingGames} />
-            <div className="stats">
-                <div className="stat-card">
-                    <p>Total: {totalGames}</p>
+
+            <StatsOverview
+                totalGames={totalGames}
+                playingGames={playingGames}
+                completedGames={completedGames}
+                notStartedGames={notStartedGames}
+            />
+
+            <button className="add-game-button" onClick={() => setIsAddModalOpen(true)}>
+                Add Game
+            </button>
+
+            {isAddModalOpen && (
+                <div className="modal-backdrop" >
+                    <div className="modal">
+                        <button className="modal-close" onClick={() => setIsAddModalOpen(false)}>
+                            x
+                        </button>
+
+                        <h2>Add Game</h2>
+
+                        <AddGameForm onAdd={(game) => {
+                            handleAddGame(game)
+                            setIsAddModalOpen(false)
+                        }}
+                        />
+                    </div>
                 </div>
-                <div className="stat-card">
-                    <p>Playing: {playingGames}</p>
-                </div>
-                <div className="stat-card">
-                    <p>Completed: {completedGames}</p>
-                </div>
-                <div className="stat-card">
-                    <p>Not Started: {notStartedGames}</p>
-                </div>
-            </div>
+            )}
 
-            <AddGameForm onAdd={handleAddGame} />
-
-            <div className="filters">
-                <input
-                    type="text"
-                    placeholder="Search by game title..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
-
-                <select
-                    value={platformFilter}
-                    onChange={(e) => setPlatformFilter(e.target.value)}
-                >
-                    <option value="all">All Platforms</option>
-
-                    {platforms.map(platform => (
-                        <option key={platform} value={platform}>
-                            {platform}
-                        </option>
-                    ))}
-                </select>
-
-                <select
-                    value={statusFilter}
-                    onChange={(e) => setStatusFilter(e.target.value)}
-                >
-                    <option value="all">All Statuses</option>
-                    <option value="Not Started">Not Started</option>
-                    <option value="Playing">Playing</option>
-                    <option value="Completed">Completed</option>
-
-                </select>
-
-                <button onClick={clearFilters} disabled={searchTerm === "" && platformFilter === "all" && statusFilter === "all"}>
-                    Clear
-                </button>
-            </div>
+            <GameFilters
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                platformFilter={platformFilter}
+                setPlatformFilter={setPlatformFilter}
+                statusFilter={statusFilter}
+                setStatusFilter={setStatusFilter}
+                clearFilters={clearFilters}
+                platforms={platforms}
+            />
 
             <GameList games={filteredGames} onDelete={handleDelete} />
         </div>

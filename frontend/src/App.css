@@ -7,15 +7,25 @@
   --text: #ffffff;
   --muted: #a1a1a1;
 
-  --accent: #4caf50;
-  --accent-hover: #43a047;
+  /* Identity / progression */
+  --xp-dark: #1a1024;
+  --xp-start: #4b1d8f;
+  --xp-mid: #7f35ff;
+  --xp-end: #b56cff;
+  --xp-border: rgba(180, 120, 255, 0.35);
+
+  /* Semantic actions */
+  --success: #22c55e;
+  --success-hover: #16a34a;
 
   --danger: #e74c3c;
   --danger-hover: #c0392b;
 
-  --border: rgba(255, 255, 255, 0.08);
-  --focus: rgba(76, 175, 80, 0.45);
-  --shadow: rgba(0, 0, 0, 0.35);
+  /* Neutral interaction */
+  --interactive: #8b9bb8;
+  --interactive-hover: #a2b1cc;
+  --focus: rgba(139, 155, 184, 0.45);
+  --focus-border: var(--interactive);
 }
 
 body {
@@ -172,9 +182,9 @@ h4 {
 .xp-progress-outer {
   width: 100%;
   height: 30px;
-  background: #1a1024;
+  background: var(--xp-dark);
   position: relative;
-  border: 1px solid rgba(180, 120, 255, 0.35);
+  border: 1px solid var(--xp-border);
   border-radius: 999px;
   overflow: hidden;
   box-shadow:
@@ -191,7 +201,7 @@ h4 {
   padding-right: 10px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 45%),
-    linear-gradient(90deg, #4b1d8f, #7f35ff, #b56cff);
+    linear-gradient(90deg, var(--xp-start), var(--xp-mid), var(--xp-end));
   /* box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.2),
     0 0 6px rgba(160, 80, 255, 0.25); */
@@ -201,6 +211,74 @@ h4 {
   text-shadow: 0 1px 2px black;
   white-space: nowrap;
   transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.modal {
+  width: min(500px, 90vw);
+  padding: 24px;
+
+  background: #18121f;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.modal .form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-close {
+  float: right;
+}
+
+.add-game-button {
+  padding: 14px 24px;
+
+  background: transparent;
+  border: 2px solid var(--success);
+  border-radius: 12px;
+
+  color: var(--success);
+  font-weight: 700;
+  font-size: 1rem;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-game-button:hover {
+  background: rgba(34, 197, 94, 0.12);
+  transform: translateY(-2px);
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.modal-close:hover {
+  color: white;
+  transform: scale(1.1);
 }
 
 /* Shared form controls */
@@ -228,7 +306,7 @@ input::placeholder {
 
 input:focus,
 select:focus {
-  border-color: var(--accent);
+  border-color: var(--focus-border);
   box-shadow: 0 0 0 3px var(--focus);
   background: var(--surface);
 }
@@ -264,7 +342,7 @@ form button {
   border: none;
   border-radius: 10px;
 
-  background: var(--accent);
+  background: var(--success);
   color: white;
 
   font-weight: 700;
@@ -274,7 +352,7 @@ form button {
 }
 
 form button:hover {
-  background: var(--accent-hover);
+  background: var(--success-hover);
   transform: translateY(-1px);
 }
 
@@ -346,12 +424,12 @@ form button:hover {
 
 .card:hover {
   transform: translateY(-6px);
-  border-color: rgba(76, 175, 80, 0.35);
+  border-color: var(--interactive-hover);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.55);
 }
 
 .card h2 {
-  color: var(--accent);
+  color: var(--interactive);
   margin-bottom: 10px;
 }
 
@@ -396,7 +474,7 @@ form button:hover {
 
 .edit:hover {
   background: var(--surface-hover);
-  border-color: var(--accent);
+  border-color: var(--interactive);
   opacity: 1;
 }
 
