@@ -172,21 +172,35 @@ h4 {
 .xp-progress-outer {
   width: 100%;
   height: 30px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  background: #1a1024;
+  position: relative;
+  border: 1px solid rgba(180, 120, 255, 0.35);
+  border-radius: 999px;
   overflow: hidden;
-  margin: 12px 0;
+  box-shadow:
+    inset 0 0 8px rgba(0, 0, 0, 0.8),
+    0 0 14px rgba(140, 70, 255, 0.25);
 }
 
 .xp-progress-inner {
   height: 100%;
-  background: var(--accent);
-  color: white;
-  font-size: 12px;
+  min-width: 0;
   display: flex;
   align-items: center;
-  justify-content: right;
-  transition: width 0.3s ease;
+  justify-content: flex-end;
+  padding-right: 10px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 45%),
+    linear-gradient(90deg, #4b1d8f, #7f35ff, #b56cff);
+  /* box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 6px rgba(160, 80, 255, 0.25); */
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 1px 2px black;
+  white-space: nowrap;
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Shared form controls */
