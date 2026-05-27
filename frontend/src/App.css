@@ -38,19 +38,14 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 100;
-
   display: flex;
   align-items: center;
   justify-content: flex-start;
   min-height: 60px;
-
   padding: 20px 40px;
-
-
   background: rgba(18, 18, 18, 0.72);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-
   border-bottom: 1px solid var(--border);
   box-shadow: 0 8px 24px var(--shadow);
 }
@@ -77,6 +72,39 @@ a:hover {
   font-weight: 700;
   letter-spacing: 0.05rem;
   text-transform: uppercase;
+}
+
+.progression-hero {
+  margin-bottom: 32px;
+}
+
+.xp-main-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.level-display {
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.xp-bar-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.xp-next {
+  flex: 0 0 auto;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.xp-total {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  opacity: 0.8;
 }
 
 .container {

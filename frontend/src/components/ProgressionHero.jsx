@@ -11,19 +11,27 @@ function ProgressionHero({ completedGames, playingGames }) {
 
     return (
         <section className="progression-hero">
-            <h2 className="xp-level">Level: {level}</h2>
+            <div className="xp-main-row">
+                <div className="level-display">
+                    Level {level}
+                </div>
 
-            <div className="xp-progress-outer">
-                <div className="xp-progress-inner" style={{ width: `${xpProgress}%` }}>
-                    {xpProgress.toFixed(0)}%
+                <div className="xp-bar-wrapper">
+                    <div className="xp-progress-outer">
+                        <div className="xp-progress-inner" style={{ width: `${xpProgress}%` }}>
+                            {currentLevelXP} / 500 XP
+                        </div>
+                    </div>
+                </div>
+
+                <div className="xp-next">
+                    {xpToNextLevel} XP to level {level + 1}
                 </div>
             </div>
 
-            <div className="xp-meta">
-                <p>{currentLevelXP} / {xpPerLevel}</p>
-                <p>{xpToNextLevel} XP to next level</p>
-                <p>Total XP: {totalXP}</p>
-            </div>
+            <p className="xp-total">
+                Total XP: {totalXP}
+            </p>
         </section>
     );
 }
