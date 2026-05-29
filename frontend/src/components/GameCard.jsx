@@ -17,7 +17,7 @@ function GameCard({ game, onDelete }) {
                 <Link to={`/game/${game.id}/edit`} className="edit">
                     Edit
                 </Link>
-                <button className="delete" onClick={() => onDelete(game.id)}>
+                <button className="delete" onClick={() => onDelete(game)}>
                     Delete
                 </button>
             </div>

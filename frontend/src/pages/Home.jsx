@@ -14,8 +14,8 @@ function Home() {
     const { loading, error, data } = useQuery(GET_GAMES)
     const [addGame] = useMutation(ADD_GAME)
     const [deleteGame] = useMutation(DELETE_GAME)
-
     const [isAddModalOpen, setIsAddModalOpen] = useState(false)
+    const [gameToDelete, setGameToDelete] = useState(null)
 
     const handleAddGame = ({ title, platform, status }) => {
         addGame({
@@ -89,6 +89,29 @@ function Home() {
                 </div>
             )}
 
+            {gameToDelete && (
+                <div className="modal-backdrop">
+                    <div className="modal">
+                        <h2>Delete Game</h2>
+
+                        <p>Are you sure you want to remove {gameToDelete.title} from your backlog?</p>
+
+                        <div className="modal-actions">
+                            <button className="modal-cancel" onClick={() => setGameToDelete(null)}>
+                                No
+                            </button>
+                            <button className="modal-danger" onClick={() => {
+                                handleDelete(gameToDelete.id)
+                                setGameToDelete(null)
+                            }}>
+                                Yes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            )}
+
             <GameFilters
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
@@ -100,7 +123,7 @@ function Home() {
                 platforms={platforms}
             />
 
-            <GameList games={filteredGames} onDelete={handleDelete} />
+            <GameList games={filteredGames} onDelete={setGameToDelete} />
         </div>
     )
 }

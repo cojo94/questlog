@@ -65,3 +65,40 @@
   color: white;
   transform: scale(1.1);
 }
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.modal-cancel,
+.modal-danger {
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.modal-cancel {
+  background: var(--surface-light);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.modal-cancel:hover {
+  background: var(--surface-hover);
+}
+
+.modal-danger {
+  background: var(--danger);
+  color: white;
+  border: none;
+}
+
+.modal-danger:hover {
+  background: var(--danger-hover);
+  transform: translateY(-1px);
+}
