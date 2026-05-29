@@ -1,0 +1,107 @@
+/* Game grid */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  min-height: 190px;
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--surface);
+  color: var(--text);
+
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+
+  box-shadow: 0 6px 18px var(--shadow);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--interactive-hover);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.55);
+}
+
+.card h2 {
+  color: var(--interactive);
+  margin-bottom: 10px;
+}
+
+.platform {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* Card buttons */
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.edit,
+.delete {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px;
+  border-radius: 9px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.edit {
+  background: var(--surface-light);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.edit:hover {
+  background: var(--surface-hover);
+  border-color: var(--interactive);
+  opacity: 1;
+}
+
+.delete {
+  background: transparent;
+  border: 1px solid var(--danger);
+  color: var(--danger);
+}
+
+.delete:hover {
+  background: var(--danger-hover);
+  color: white;
+}
+
+.details-section {
+  margin-top: 32px;
+}
+
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.review-card {
+  min-height: auto;
+}

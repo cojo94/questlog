@@ -1,0 +1,39 @@
+/* Filters */
+
+.filters {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  margin: 24px 0 36px;
+}
+
+.filters input,
+.filters select {
+  flex: 1;
+}
+
+.filters button {
+  padding: 12px 18px;
+
+  border-radius: 10px;
+  border: 1px solid var(--border);
+
+  background: var(--surface-light);
+  color: var(--text);
+
+  font-weight: 700;
+  cursor: pointer;
+
+  transition: background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.filters button:hover:not(:disabled) {
+  background: var(--surface-hover);
+  border-color: var(--accent);
+}
+
+.filters button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

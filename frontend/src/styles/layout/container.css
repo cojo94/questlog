@@ -1,0 +1,12 @@
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+.container>p {
+  text-align: center;
+  color: var(--muted);
+  margin: 32px 0 32px 0;
+}

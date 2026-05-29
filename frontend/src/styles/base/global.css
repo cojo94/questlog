@@ -1,0 +1,25 @@
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+
+a:hover {
+  opacity: 0.85;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0;
+}
+
+.subtitle {
+  text-align: center;
+  margin: 0 0 36px;
+
+  color: var(--muted);
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}

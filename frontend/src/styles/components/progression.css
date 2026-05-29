@@ -1,0 +1,66 @@
+.progression-hero {
+  margin-bottom: 32px;
+}
+
+.xp-main-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.level-display {
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.xp-bar-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.xp-next {
+  flex: 0 0 auto;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.xp-total {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.xp-progress-outer {
+  width: 100%;
+  height: 30px;
+  background: var(--xp-dark);
+  position: relative;
+  border: 1px solid var(--xp-border);
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 8px rgba(0, 0, 0, 0.8),
+    0 0 14px rgba(140, 70, 255, 0.25);
+}
+
+.xp-progress-inner {
+  height: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 45%),
+    linear-gradient(90deg, var(--xp-start), var(--xp-mid), var(--xp-end));
+  /* box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 6px rgba(160, 80, 255, 0.25); */
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 1px 2px black;
+  white-space: nowrap;
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}

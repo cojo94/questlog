@@ -1,0 +1,29 @@
+:root {
+  --bg: #121212;
+  --surface: #1e1e1e;
+  --surface-light: #2a2a2a;
+  --surface-hover: #333333;
+
+  --text: #ffffff;
+  --muted: #a1a1a1;
+
+  /* Identity / progression */
+  --xp-dark: #1a1024;
+  --xp-start: #4b1d8f;
+  --xp-mid: #7f35ff;
+  --xp-end: #b56cff;
+  --xp-border: rgba(180, 120, 255, 0.35);
+
+  /* Semantic actions */
+  --success: #22c55e;
+  --success-hover: #16a34a;
+
+  --danger: #e74c3c;
+  --danger-hover: #c0392b;
+
+  /* Neutral interaction */
+  --interactive: #8b9bb8;
+  --interactive-hover: #a2b1cc;
+  --focus: rgba(139, 155, 184, 0.45);
+  --focus-border: var(--interactive);
+}

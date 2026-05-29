@@ -1,4 +1,4 @@
-import './App.css'
+import './styles/main.css'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import GameDetails from './pages/GameDetails'

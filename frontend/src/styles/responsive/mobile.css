@@ -1,0 +1,52 @@
+/* Mobile */
+
+@media (max-width: 700px) {
+  .container {
+    width: 94%;
+    padding: 24px 0;
+  }
+
+  .header {
+    padding: 14px 18px;
+  }
+
+  h1,
+  .page-title {
+    font-size: 2.2rem;
+    margin-bottom: 18px;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+
+  .stats {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 8px 12px;
+  }
+
+  form,
+  .form-fields,
+  .filters {
+    flex-direction: column;
+  }
+
+  form button,
+  .filters button {
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .card {
+    min-height: auto;
+  }
+}

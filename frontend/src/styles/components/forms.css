@@ -1,0 +1,74 @@
+/* Shared form controls */
+
+input,
+select {
+  width: 100%;
+  padding: 12px 16px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  background: var(--surface-light);
+  color: var(--text);
+
+  font-size: 14px;
+  outline: none;
+
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+input::placeholder {
+  color: var(--muted);
+}
+
+input:focus,
+select:focus {
+  border-color: var(--focus-border);
+  box-shadow: 0 0 0 3px var(--focus);
+  background: var(--surface);
+}
+
+/* Add forms */
+
+form {
+  display: flex;
+  gap: 12px;
+
+  background: var(--surface);
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+
+  margin-bottom: 28px;
+}
+
+.form-fields {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+}
+
+form input,
+form select {
+  flex: 1;
+}
+
+form button {
+  padding: 12px 20px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: var(--success);
+  color: white;
+
+  font-weight: 700;
+  cursor: pointer;
+
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+form button:hover {
+  background: var(--success-hover);
+  transform: translateY(-1px);
+}

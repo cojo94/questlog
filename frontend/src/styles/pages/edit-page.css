@@ -1,0 +1,41 @@
+.edit-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+.edit-page h1 {
+  margin-bottom: 30px;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  background: var(--surface);
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+.edit-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.edit-form input {
+  width: 100%;
+}
+
+.edit-form button {
+  margin-top: 12px;
+  align-self: flex-start;
+  min-width: 180px;
+}
