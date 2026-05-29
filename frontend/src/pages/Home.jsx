@@ -7,14 +7,14 @@ import GameList from '../components/GameList'
 import ProgressionHero from '../components/ProgressionHero'
 import StatsOverview from '../components/StatsOverview'
 import GameFilters from '../components/GameFilters'
+import { useGameFilters } from '../hooks/useGameFilters'
+import { useGameStats } from '../hooks/useGameStats'
 
 function Home() {
     const { loading, error, data } = useQuery(GET_GAMES)
     const [addGame] = useMutation(ADD_GAME)
     const [deleteGame] = useMutation(DELETE_GAME)
-    const [searchTerm, setSearchTerm] = useState("")
-    const [platformFilter, setPlatformFilter] = useState("all") // "all" means no filter, or show all platforms
-    const [statusFilter, setStatusFilter] = useState("all")
+
     const [isAddModalOpen, setIsAddModalOpen] = useState(false)
 
     const handleAddGame = ({ title, platform, status }) => {
@@ -37,49 +37,34 @@ function Home() {
         })
     }
 
+    const games = data?.games ?? []
+
+    const {
+        searchTerm,
+        setSearchTerm,
+        platformFilter,
+        setPlatformFilter,
+        statusFilter,
+        setStatusFilter,
+        platforms,
+        filteredGames,
+        clearFilters
+    } = useGameFilters(games)
+
+    const stats = useGameStats(games)
+
     if (loading) return <h2>Loading...</h2>
     if (error) return <h2>Error: {error.message}</h2>
 
-    const totalGames = data.games.length
-
-    const playingGames = data.games.filter(game => game.status === "Playing").length
-    const completedGames = data.games.filter(game => game.status === "Completed").length
-    const notStartedGames = data.games.filter(game => game.status === "Not Started").length
-
-    const platforms = [...new Set(data.games.flatMap(game => game.platform))]
-
-    const search = searchTerm.toLowerCase()
-
-    const filteredGames = data.games.filter(game => {
-        const matchesSearch =
-            game.title.toLowerCase().includes(search)
-
-        const matchesPlatform =
-            platformFilter === "all" ||
-            game.platform.includes(platformFilter)
-
-        const matchesStatus =
-            statusFilter === "all" ||
-            game.status === statusFilter
-
-        return matchesSearch && matchesPlatform && matchesStatus
-    })
-
-    const clearFilters = () => {
-        setSearchTerm("")
-        setPlatformFilter("all")
-        setStatusFilter("all")
-    }
-
     return (
         <div className="container">
-            <ProgressionHero completedGames={completedGames} playingGames={playingGames} />
+            <ProgressionHero completedGames={stats.completedGames} playingGames={stats.playingGames} />
 
             <StatsOverview
-                totalGames={totalGames}
-                playingGames={playingGames}
-                completedGames={completedGames}
-                notStartedGames={notStartedGames}
+                totalGames={stats.totalGames}
+                playingGames={stats.playingGames}
+                completedGames={stats.completedGames}
+                notStartedGames={stats.notStartedGames}
             />
 
             <button className="add-game-button" onClick={() => setIsAddModalOpen(true)}>

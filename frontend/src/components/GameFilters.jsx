@@ -1,4 +1,5 @@
 function GameFilters({ searchTerm, setSearchTerm, platformFilter, setPlatformFilter, statusFilter, setStatusFilter, clearFilters, platforms }) {
+
     return (
         <div className="filters">
             <input
