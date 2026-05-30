@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-function GameCard({ game, onDelete }) {
+function GameCard({ game, onDelete, onEdit }) {
     return (
         <div className="card">
             <Link to={`/game/${game.id}`}>
@@ -14,9 +14,11 @@ function GameCard({ game, onDelete }) {
                 Status: {game.status}
             </p>
             <div className="actions">
-                <Link to={`/game/${game.id}/edit`} className="edit">
+                <button className="edit" onClick={() => {
+                    onEdit(game)
+                }}>
                     Edit
-                </Link>
+                </button>
                 <button className="delete" onClick={() => onDelete(game)}>
                     Delete
                 </button>

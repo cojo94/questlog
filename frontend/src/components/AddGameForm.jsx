@@ -34,7 +34,7 @@ function AddGameForm({ onAdd }) {
                     <option value="Playing">Playing</option>
                     <option value="Completed">Completed</option>
                 </select>
-                <button type="submit">
+                <button className="modal-confirm" type="submit">
                     Add Game
                 </button>
             </div>

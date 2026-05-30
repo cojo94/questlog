@@ -25,6 +25,24 @@
   gap: 12px;
 }
 
+.modal-confirm {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+
+  background: var(--success);
+  color: white;
+
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-confirm:hover {
+  transform: translateY(-1px);
+  background: var(--success-hover);
+}
+
 .modal-close {
   float: right;
 }
