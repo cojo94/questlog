@@ -3,7 +3,7 @@
 } */
 
 .stats-header {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .stats-header h1 {
@@ -20,6 +20,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.25rem;
+    max-width: 1100px;
 }
 
 .stats-card:first-child {

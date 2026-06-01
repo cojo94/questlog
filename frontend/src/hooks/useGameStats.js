@@ -12,6 +12,20 @@ export function useGameStats(games) {
             ? Math.round((completedGames / totalGames) * 100)
             : 0
 
+    const genreCounts = games.reduce((counts, game) => {
+        if (!game.genre) return counts
+
+        counts[game.genre] = (counts[game.genre] || 0) + 1
+        return counts
+    }, {})
+
+    const favoriteGenre =
+        Object.keys(genreCounts).length > 0
+            ? Object.keys(genreCounts).reduce((a, b) =>
+                genreCounts[a] > genreCounts[b] ? a : b
+            )
+            : "N/A"
+
     return {
         totalGames,
         playingGames,
@@ -19,6 +33,7 @@ export function useGameStats(games) {
         notStartedGames,
         totalXP,
         level,
-        completionRate
+        completionRate,
+        favoriteGenre
     }
 }

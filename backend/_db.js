@@ -1,10 +1,10 @@
 let games = [
-    { id: '1', title: "Baldur's Gate 3", platform: ["PC", "Xbox", "PS5"], status: "Playing" },
-    { id: '2', title: "Dispatch", platform: ["PC", "PS5", "Xbox"], status: "Completed" },
-    { id: '3', title: "Elden Ring", platform: ["PS5", "Xbox", "PC"], status: "Not Started" },
-    { id: '4', title: "Mario Kart", platform: ["Switch"], status: "Playing" },
-    { id: '5', title: "Pokemon Scarlet", platform: ["PS5", "Xbox", "PC"], status: "Not Started" },
-    { id: '6', title: "Cyberpunk 2077", platform: ["PC", "PS5", "Xbox"], status: "Completed" },
+    { id: '1', title: "Baldur's Gate 3", platform: ["PC", "Xbox", "PS5"], status: "Playing", genre: "RPG" },
+    { id: '2', title: "Dispatch", platform: ["PC", "PS5", "Xbox"], status: "Completed", genre: "Action" },
+    { id: '3', title: "Elden Ring", platform: ["PS5", "Xbox", "PC"], status: "Not Started", genre: "RPG" },
+    { id: '4', title: "Mario Kart", platform: ["Switch"], status: "Playing", genre: "Racing" },
+    { id: '5', title: "Pokemon Scarlet", platform: ["PS5", "Xbox", "PC"], status: "Not Started", genre: "RPG" },
+    { id: '6', title: "Cyberpunk 2077", platform: ["PC", "PS5", "Xbox"], status: "Completed", genre: "RPG" },
 ]
 
 let authors = [

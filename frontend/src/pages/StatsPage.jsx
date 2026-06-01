@@ -28,6 +28,7 @@ export default function StatsPage() {
                     <StatsCard label="Completed" value={stats.completedGames} />
                     <StatsCard label="Playing" value={stats.playingGames} />
                     <StatsCard label="Not Started" value={stats.notStartedGames} />
+                    <StatsCard label="Favorite Genre" value={stats.favoriteGenre} />
                 </section>
             </div>
 

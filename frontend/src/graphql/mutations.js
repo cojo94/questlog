@@ -7,6 +7,7 @@ export const ADD_GAME = gql`
       title
       platform
       status
+      genre
     }
   }
 `
@@ -26,6 +27,7 @@ export const UPDATE_GAME = gql`
       title
       platform
       status
+      genre
     }
   }
 `

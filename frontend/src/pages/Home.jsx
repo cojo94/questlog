@@ -17,13 +17,14 @@ function Home() {
     const [isAddModalOpen, setIsAddModalOpen] = useState(false)
     const [gameToDelete, setGameToDelete] = useState(null)
 
-    const handleAddGame = ({ title, platform, status }) => {
+    const handleAddGame = ({ title, platform, status, genre }) => {
         addGame({
             variables: {
                 game: {
                     title,
                     platform: platform.split(",").map(p => p.trim()),
-                    status
+                    status,
+                    genre
                 }
             },
             refetchQueries: [{ query: GET_GAMES }]

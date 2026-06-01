@@ -8,6 +8,7 @@ function GameList({ games, onDelete }) {
     const [editTitle, setEditTitle] = useState("")
     const [editPlatform, setEditPlatform] = useState("")
     const [editStatus, setEditStatus] = useState("Not Started")
+    const [editGenre, setEditGenre] = useState("")
     const [updateGame] = useMutation(UPDATE_GAME);
 
     const handleOpenEditModal = (game) => {
@@ -15,6 +16,7 @@ function GameList({ games, onDelete }) {
         setEditTitle(game.title)
         setEditPlatform(game.platform.join(", "))
         setEditStatus(game.status)
+        setEditGenre(game.genre || "")
     };
 
     const handleSaveEdit = async () => {
@@ -24,9 +26,10 @@ function GameList({ games, onDelete }) {
                 edits: {
                     title: editTitle,
                     platform: editPlatform.split(", ").map(p => p.trim()).filter(Boolean),
-                    status: editStatus
-                }
-            }
+                    status: editStatus,
+                    genre: editGenre,
+                },
+            },
         });
         setGameToEdit(null);
     };
@@ -81,6 +84,23 @@ function GameList({ games, onDelete }) {
                                         <option value="Not Started">Not Started</option>
                                         <option value="Playing">Playing</option>
                                         <option value="Completed">Completed</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    Genre:
+                                    <select
+                                        value={editGenre}
+                                        onChange={(e) => setEditGenre(e.target.value)}
+                                    >
+                                        <option value="">Select Genre</option>
+                                        <option value="RPG">RPG</option>
+                                        <option value="Action">Action</option>
+                                        <option value="Adventure">Adventure</option>
+                                        <option value="Strategy">Strategy</option>
+                                        <option value="Horror">Horror</option>
+                                        <option value="Simulation">Simulation</option>
+                                        <option value="Racing">Racing</option>
+                                        <option value="Other">Other</option>
                                     </select>
                                 </label>
                                 <button className="modal-confirm" type="submit">

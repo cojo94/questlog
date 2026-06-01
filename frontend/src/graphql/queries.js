@@ -7,6 +7,7 @@ export const GET_GAMES = gql`
       title
       platform
       status
+      genre
     }
   }
 `
@@ -17,6 +18,8 @@ export const GET_GAME = gql`
       id
       title
       platform
+      status
+      genre
       reviews {
         id
         rating
