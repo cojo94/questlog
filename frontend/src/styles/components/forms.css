@@ -48,6 +48,13 @@ form {
   flex: 1;
 }
 
+.form-fields label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: var(--muted);
+}
+
 form input,
 form select {
   flex: 1;

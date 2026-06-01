@@ -51,44 +51,43 @@ function GameList({ games, onDelete }) {
                         </button>
                         <h2>Edit Game</h2>
 
-                        <div className="form-fields">
-                            <label>
-                                Title:
-                                <input
-                                    type="text"
-                                    value={editTitle}
-                                    onChange={(e) => setEditTitle(e.target.value)}
-                                />
-                            </label>
-                            <label>
-                                Platform:
-                                <input
-                                    type="text"
-                                    value={editPlatform}
-                                    onChange={(e) => setEditPlatform(e.target.value)}
-                                />
-                            </label>
-                            <label>
-                                Status:
-                                <select
-                                    value={editStatus}
-                                    onChange={(e) => setEditStatus(e.target.value)}
-                                >
-                                    <option value="Not Started">Not Started</option>
-                                    <option value="Playing">Playing</option>
-                                    <option value="Completed">Completed</option>
-                                </select>
-                            </label>
-                        </div>
-
-                        <div className="modal-actions">
-                            <button className="modal-cancel" onClick={() => setGameToEdit(null)}>
-                                Cancel
-                            </button>
-                            <button className="modal-confirm" onClick={handleSaveEdit}>
-                                Save Changes
-                            </button>
-                        </div>
+                        <form onSubmit={(e) => {
+                            e.preventDefault();
+                            handleSaveEdit();
+                        }}>
+                            <div className="form-fields">
+                                <label>
+                                    Title:
+                                    <input
+                                        type="text"
+                                        value={editTitle}
+                                        onChange={(e) => setEditTitle(e.target.value)}
+                                    />
+                                </label>
+                                <label>
+                                    Platform:
+                                    <input
+                                        type="text"
+                                        value={editPlatform}
+                                        onChange={(e) => setEditPlatform(e.target.value)}
+                                    />
+                                </label>
+                                <label>
+                                    Status:
+                                    <select
+                                        value={editStatus}
+                                        onChange={(e) => setEditStatus(e.target.value)}
+                                    >
+                                        <option value="Not Started">Not Started</option>
+                                        <option value="Playing">Playing</option>
+                                        <option value="Completed">Completed</option>
+                                    </select>
+                                </label>
+                                <button className="modal-confirm" type="submit">
+                                    Save Changes
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             )}
