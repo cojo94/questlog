@@ -4,10 +4,11 @@
 @import './layout/header.css';
 @import './layout/container.css';
 @import './components/progression.css';
-@import './components/stats.css';
+@import './components/stats-overview.css';
 @import './components/modals.css';
 @import './components/forms.css';
 @import './components/filters.css';
 @import './components/game-card.css';
 @import './pages/edit-page.css';
+@import './pages/stats.css';
 @import './responsive/mobile.css';

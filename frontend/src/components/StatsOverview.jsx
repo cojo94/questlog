@@ -1,19 +1,19 @@
 function StatsOverview({ totalGames, playingGames, completedGames, notStartedGames }) {
     return (
-        <div className="stats">
-            <div className="stat-card">
+        <section className="stats-overview">
+            <article className="stats-overview-card">
                 <p>Total: {totalGames}</p>
-            </div>
-            <div className="stat-card">
+            </article>
+            <article className="stats-overview-card">
                 <p>Playing: {playingGames}</p>
-            </div>
-            <div className="stat-card">
+            </article>
+            <article className="stats-overview-card">
                 <p>Completed: {completedGames}</p>
-            </div>
-            <div className="stat-card">
+            </article>
+            <article className="stats-overview-card">
                 <p>Not Started: {notStartedGames}</p>
-            </div>
-        </div>
+            </article>
+        </section>
     )
 }
 

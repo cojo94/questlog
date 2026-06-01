@@ -6,6 +6,7 @@ function Header() {
             <p className="header-title">QuestLog</p>
             <nav className="nav">
                 <Link to="/">Home</Link>
+                <Link to="/stats">Stats</Link>
             </nav>
         </header>
     )

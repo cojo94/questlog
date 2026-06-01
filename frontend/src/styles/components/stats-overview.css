@@ -1,4 +1,4 @@
-.stats {
+.stats-overview {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -6,27 +6,27 @@
   margin: 24px 0 32px;
 }
 
-.stat-card {
+.stats-overview-card {
   padding: 10px 18px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.stat-card p {
+.stats-overview-card p {
   margin: 0;
   font-size: 14px;
   font-weight: 600;
 }
 
-.stat-card:nth-child(2) {
+.stats-overview-card:nth-child(2) {
   border-color: rgba(66, 165, 245, 0.35);
 }
 
-.stat-card:nth-child(3) {
+.stats-overview-card:nth-child(3) {
   border-color: rgba(76, 175, 80, 0.35);
 }
 
-.stat-card:nth-child(4) {
+.stats-overview-card:nth-child(4) {
   border-color: rgba(255, 183, 77, 0.35);
 }
