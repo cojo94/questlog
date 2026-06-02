@@ -54,12 +54,12 @@ function GameDetails() {
                 Current XP: {getGameXP(game.status)} XP
             </p>
             <section className="details-section">
-                <h3>Reviews</h3>
+                <h3>Quest Notes</h3>
 
                 <AddReviewForm onAddReview={handleAddReview} authors={authorsData?.authors || []} />
                 <div className="review-list">
                     {game.reviews.length === 0 && (
-                        <p>No reviews yet</p>
+                        <p>No notes yet</p>
                     )}
 
                     {game.reviews.map(review => (

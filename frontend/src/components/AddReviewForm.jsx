@@ -25,13 +25,13 @@ function AddReviewForm({ onAddReview, authors }) {
                 type="number"
                 min="1"
                 max="10"
-                placeholder="Rating (1-10)"
+                placeholder="Personal Rating (1-10)"
                 value={rating}
                 onChange={(e) => setRating(e.target.value)}
             />
 
-            <input
-                placeholder="Review content"
+            <textarea
+                placeholder="Add your quest notes here..."
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
             />
@@ -39,7 +39,7 @@ function AddReviewForm({ onAddReview, authors }) {
                 value={authorId}
                 onChange={(e) => setAuthorId(e.target.value)}
             >
-                <option value="">Select Author</option>
+                <option value="">Select Author (Legacy)</option>
 
                 {authors.map((author) => (
                     <option key={author.id} value={author.id}>
@@ -48,7 +48,7 @@ function AddReviewForm({ onAddReview, authors }) {
                 ))}
             </select>
             <button type="submit">
-                Add Review
+                Add Note
             </button>
         </form>
     );
