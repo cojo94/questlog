@@ -1,11 +1,13 @@
+import { getGameXP, xpPerLevel } from "../utils/xp"
+
 export function useGameStats(games) {
     const totalGames = games.length
     const playingGames = games.filter(game => game.status === "Playing").length
     const completedGames = games.filter(game => game.status === "Completed").length
     const notStartedGames = games.filter(game => game.status === "Not Started").length
 
-    const totalXP = completedGames * 100 + playingGames * 25
-    const level = Math.floor(totalXP / 500) + 1
+    const totalXP = completedGames * getGameXP("Completed") + playingGames * getGameXP("Playing")
+    const level = Math.floor(totalXP / xpPerLevel) + 1 // Level up every 500 XP
 
     const completionRate =
         totalGames > 0

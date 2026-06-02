@@ -4,6 +4,7 @@ import { GET_GAME, GET_AUTHORS } from "../graphql/queries"
 import { ADD_REVIEW } from "../graphql/mutations"
 import ReviewCard from "../components/ReviewCard"
 import AddReviewForm from "../components/AddReviewForm"
+import { getGameXP } from "../utils/xp"
 
 function GameDetails() {
     const { id } = useParams()
@@ -42,6 +43,15 @@ function GameDetails() {
 
             <p>
                 Platforms: {game.platform.join(", ")}
+            </p>
+            <p>
+                Status: {game.status}
+            </p>
+            <p>
+                Genre: {game.genre}
+            </p>
+            <p>
+                Current XP: {getGameXP(game.status)} XP
             </p>
             <section className="details-section">
                 <h3>Reviews</h3>

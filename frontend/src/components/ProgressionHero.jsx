@@ -1,10 +1,11 @@
+import { getGameXP, xpPerLevel } from "../utils/xp"
+
 function ProgressionHero({ completedGames, playingGames }) {
-    const xpFromCompleted = completedGames * 100
-    const xpFromPlaying = playingGames * 25 // Assuming 25 XP per game in progress
+    const xpFromCompleted = completedGames * getGameXP("Completed")
+    const xpFromPlaying = playingGames * getGameXP("Playing")
     const totalXP = xpFromCompleted + xpFromPlaying
 
-    const xpPerLevel = 500
-    const level = Math.floor(totalXP / 500) + 1 // Level up every 500 XP
+    const level = Math.floor(totalXP / xpPerLevel) + 1 // Level up every 500 XP
     const currentLevelXP = totalXP % xpPerLevel
     const xpToNextLevel = xpPerLevel - currentLevelXP
     const xpProgress = (currentLevelXP / xpPerLevel) * 100
@@ -19,7 +20,7 @@ function ProgressionHero({ completedGames, playingGames }) {
                 <div className="xp-bar-wrapper">
                     <div className="xp-progress-outer">
                         <div className="xp-progress-inner" style={{ width: `${xpProgress}%` }}>
-                            {currentLevelXP} / 500 XP
+                            {currentLevelXP} / {xpPerLevel} XP
                         </div>
                     </div>
                 </div>
