@@ -8,6 +8,7 @@ export const GET_GAMES = gql`
       platform
       status
       genre
+      personalRating
     }
   }
 `
@@ -20,24 +21,11 @@ export const GET_GAME = gql`
       platform
       status
       genre
-      reviews {
+      personalRating
+      notes {
         id
-        rating
         content
-        author {
-          name
-        }
       }
-    }
-  }
-`
-
-export const GET_AUTHORS = gql`
-  query GetAuthors {
-    authors {
-      id
-      name
-      verified
     }
   }
 `

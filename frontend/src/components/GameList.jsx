@@ -9,6 +9,7 @@ function GameList({ games, onDelete }) {
     const [editPlatform, setEditPlatform] = useState("")
     const [editStatus, setEditStatus] = useState("Not Started")
     const [editGenre, setEditGenre] = useState("")
+    const [editPersonalRating, setEditPersonalRating] = useState("")
     const [updateGame] = useMutation(UPDATE_GAME);
 
     const handleOpenEditModal = (game) => {
@@ -17,6 +18,7 @@ function GameList({ games, onDelete }) {
         setEditPlatform(game.platform.join(", "))
         setEditStatus(game.status)
         setEditGenre(game.genre || "")
+        setEditPersonalRating(game.personalRating ? String(game.personalRating) : "")
     };
 
     const handleSaveEdit = async () => {
@@ -25,9 +27,10 @@ function GameList({ games, onDelete }) {
                 id: gameToEdit.id,
                 edits: {
                     title: editTitle,
-                    platform: editPlatform.split(", ").map(p => p.trim()).filter(Boolean),
+                    platform: editPlatform.split(",").map(p => p.trim()).filter(Boolean),
                     status: editStatus,
                     genre: editGenre,
+                    personalRating: editPersonalRating ? Number(editPersonalRating) : null
                 },
             },
         });
@@ -102,6 +105,17 @@ function GameList({ games, onDelete }) {
                                         <option value="Racing">Racing</option>
                                         <option value="Other">Other</option>
                                     </select>
+                                </label>
+                                <label>
+                                    Personal Rating (optional):
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        max="10"
+                                        placeholder="1-10"
+                                        value={editPersonalRating}
+                                        onChange={(e) => setEditPersonalRating(e.target.value)}
+                                    />
                                 </label>
                                 <button className="modal-confirm" type="submit">
                                     Save Changes

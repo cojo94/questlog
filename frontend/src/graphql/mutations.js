@@ -8,6 +8,7 @@ export const ADD_GAME = gql`
       platform
       status
       genre
+      personalRating
     }
   }
 `
@@ -28,18 +29,19 @@ export const UPDATE_GAME = gql`
       platform
       status
       genre
+      personalRating
     }
   }
 `
 
-export const ADD_REVIEW = gql`
-  mutation AddReview($review: AddReviewInput!) {
-    addReview(review: $review) {
+export const ADD_NOTE = gql`
+  mutation AddNote($note: AddNoteInput!) {
+    addNote(note: $note) {
       id
-      rating
       content
-      author {
-        name
+      game {
+        id
+        title
       }
     }
   }

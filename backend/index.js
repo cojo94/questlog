@@ -11,37 +11,18 @@ const resolvers = {
         game(_, args) {
             return _db.games.find((game) => game.id === args.id)
         },
-        authors() {
-            return _db.authors
-        },
-        author(_, args) {
-            return _db.authors.find((author) => author.id === args.id)
-        },
-        reviews() {
-            return _db.reviews
-        },
-        review(_, args) {
-            return _db.reviews.find((review) => review.id === args.id)
-        }
     },
     Game: {
-        reviews(parent) {
-            return _db.reviews.filter((r) => r.game_id === parent.id)
+        notes(parent) {
+            return _db.notes.filter((n) => n.game_id === parent.id)
         }
     },
-    Author: {
-        reviews(parent) {
-            return _db.reviews.filter((r) => r.author_id === parent.id)
-        }
-    },
-    Review: {
-        author(parent) {
-            return _db.authors.find((a) => a.id === parent.author_id)
-        },
+    Note: {
         game(parent) {
             return _db.games.find((g) => g.id === parent.game_id)
         }
     },
+
     Mutation: {
         deleteGame(_, args) {
             _db.games = _db.games.filter((g) => g.id !== args.id)
@@ -64,13 +45,13 @@ const resolvers = {
             })
             return _db.games.find((g) => g.id === args.id)
         },
-        addReview(_, args) {
-            let review = {
-                ...args.review,
+        addNote(_, args) {
+            let note = {
+                ...args.note,
                 id: Math.floor(Math.random() * 10000).toString()
             }
-            _db.reviews.push(review)
-            return review
+            _db.notes.push(note)
+            return note
         }
     }
 }

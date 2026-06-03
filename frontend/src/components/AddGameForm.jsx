@@ -5,15 +5,17 @@ function AddGameForm({ onAdd }) {
     const [platform, setPlatform] = useState("")
     const [status, setStatus] = useState("Not Started")
     const [genre, setGenre] = useState("")
+    const [personalRating, setPersonalRating] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault()
         if (!title.trim() || !platform.trim() || !genre) return
-        onAdd({ title, platform, status, genre })
+        onAdd({ title, platform, status, genre, personalRating: personalRating ? Number(personalRating) : null })
         setTitle("")
         setPlatform("")
         setStatus("Not Started")
         setGenre("")
+        setPersonalRating("")
     }
 
     return (
@@ -57,6 +59,16 @@ function AddGameForm({ onAdd }) {
                         <option value="Racing">Racing</option>
                         <option value="Other">Other</option>
                     </select>
+                </label>
+                <label>Personal Rating (optional):
+                    <input
+                        type="number"
+                        min="1"
+                        max="10"
+                        placeholder="1-10"
+                        value={personalRating}
+                        onChange={(e) => setPersonalRating(e.target.value)}
+                    />
                 </label>
                 <button className="modal-confirm" type="submit">
                     Add Game

@@ -56,6 +56,7 @@ form {
   display: flex;
   gap: 12px;
   flex: 1;
+  flex-wrap: wrap;
 }
 
 .form-fields label {
@@ -63,6 +64,14 @@ form {
   flex-direction: column;
   gap: 0.4rem;
   color: var(--muted);
+  flex: 1;
+}
+
+.form-fields input,
+.form-fields select,
+.form-fields textarea {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 form input,

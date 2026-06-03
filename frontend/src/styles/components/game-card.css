@@ -95,13 +95,13 @@
   margin-top: 32px;
 }
 
-.review-list {
+.note-list {
   display: flex;
   flex-direction: column;
   gap: 18px;
   margin-top: 18px;
 }
 
-.review-card {
+.note-card {
   min-height: auto;
 }

@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom"
 import { useQuery, useMutation } from "@apollo/client/react"
-import { GET_GAME, GET_AUTHORS } from "../graphql/queries"
-import { ADD_REVIEW } from "../graphql/mutations"
-import ReviewCard from "../components/ReviewCard"
-import AddReviewForm from "../components/AddReviewForm"
+import { GET_GAME } from "../graphql/queries"
+import { ADD_NOTE } from "../graphql/mutations"
+import NoteCard from "../components/NoteCard"
+import AddNoteForm from "../components/AddNoteForm"
 import { getGameXP } from "../utils/xp"
 
 function GameDetails() {
@@ -13,27 +13,22 @@ function GameDetails() {
         variables: { id }
     })
 
-    const { loading: authorsLoading, error: authorsError, data: authorsData } = useQuery(GET_AUTHORS)
+    const [addNote] = useMutation(ADD_NOTE)
 
-    const [addReview] = useMutation(ADD_REVIEW)
-
-    const handleAddReview = ({ rating, content, author_id }) => {
-        addReview({
+    const handleAddNote = ({ content }) => {
+        addNote({
             variables: {
-                review: {
-                    rating,
+                note: {
                     content,
-                    game_id: id,
-                    author_id
+                    game_id: id
                 }
             },
             refetchQueries: [{ query: GET_GAME, variables: { id } }]
         })
     }
 
-    if (loading || authorsLoading) return <h2>Loading...</h2>
+    if (loading) return <h2>Loading...</h2>
     if (error) return <h2>Error: {error.message}</h2>
-    if (authorsError) return <h2>Error: {authorsError.message}</h2>
 
     const game = data.game
 
@@ -51,19 +46,22 @@ function GameDetails() {
                 Genre: {game.genre}
             </p>
             <p>
+                Personal Rating: {game.personalRating ? `${game.personalRating}/10` : "Not rated yet"}
+            </p>
+            <p>
                 Current XP: {getGameXP(game.status)} XP
             </p>
             <section className="details-section">
                 <h3>Quest Notes</h3>
 
-                <AddReviewForm onAddReview={handleAddReview} authors={authorsData?.authors || []} />
-                <div className="review-list">
-                    {game.reviews.length === 0 && (
+                <AddNoteForm onAddNote={handleAddNote} />
+                <div className="note-list">
+                    {game.notes.length === 0 && (
                         <p>No notes yet</p>
                     )}
 
-                    {game.reviews.map(review => (
-                        <ReviewCard key={review.id} review={review} />
+                    {game.notes.map(note => (
+                        <NoteCard key={note.id} note={note} />
                     ))}
                 </div>
             </section>

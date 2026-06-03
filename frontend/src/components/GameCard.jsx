@@ -13,6 +13,9 @@ function GameCard({ game, onDelete, onEdit }) {
             <p className="status">
                 Status: {game.status}
             </p>
+            <p>
+                Personal Rating: {game.personalRating ? `${game.personalRating}/10` : "Not rated yet"}
+            </p>
             <div className="actions">
                 <button className="edit" onClick={() => {
                     onEdit(game)
