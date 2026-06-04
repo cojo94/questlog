@@ -2,11 +2,12 @@ import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { typeDefs } from "./schema.js";
 import _db from "./_db.js";
+import prisma from "./prismaClient.js";
 
 const resolvers = {
     Query: {
-        games() {
-            return _db.games
+        games: async () => {
+            return await prisma.game.findMany()
         },
         game(_, args) {
             return _db.games.find((game) => game.id === args.id)
@@ -28,13 +29,17 @@ const resolvers = {
             _db.games = _db.games.filter((g) => g.id !== args.id)
             return _db.games
         },
-        addGame(_, args) {
-            let game = {
-                ...args.game,
-                id: Math.floor(Math.random() * 10000).toString()
-            }
-            _db.games.push(game)
-            return game
+        addGame: async (_, args) => {
+            const { title, platform, status, genre } = args.game
+
+            return await prisma.game.create({
+                data: {
+                    title,
+                    platform,
+                    status,
+                    genre
+                }
+            })
         },
         updateGame(_, args) {
             _db.games = _db.games.map((g) => {
