@@ -19,7 +19,7 @@ export const typeDefs = `#graphql
     }
     type Mutation {
         addGame(game: AddGameInput!): Game
-        deleteGame(id: ID!): [Game]
+        deleteGame(id: ID!): Game
         updateGame(id: ID!, edits: EditGameInput!): Game
         addNote(note: AddNoteInput!): Note
     }
@@ -39,6 +39,6 @@ export const typeDefs = `#graphql
     }
     input AddNoteInput {
         content: String!
-        game_id: ID!
+        gameId: ID!
     }
 `

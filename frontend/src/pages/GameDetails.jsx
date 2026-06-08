@@ -20,7 +20,7 @@ function GameDetails() {
             variables: {
                 note: {
                     content,
-                    game_id: id
+                    gameId: id
                 }
             },
             refetchQueries: [{ query: GET_GAME, variables: { id } }]

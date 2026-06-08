@@ -12,9 +12,19 @@ datasource db {
 }
 
 model Game {
-  id       String   @id @default(uuid())
-  title    String
-  platform String[]
-  status   String
-  genre    String?
+  id             String   @id @default(uuid())
+  title          String
+  platform       String[]
+  status         String
+  genre          String?
+  personalRating Int?
+
+  notes Note[]
+}
+
+model Note {
+  id      String @id @default(uuid())
+  content String
+  gameId  String
+  game    Game   @relation(fields: [gameId], references: [id], onDelete: Cascade)
 }
