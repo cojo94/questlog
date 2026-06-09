@@ -1,43 +1,71 @@
-# 🎮 Games Library
+# 🎮 QuestLog
 
-A fullstack game library application built with React, GraphQL, Apollo Client and Apollo Server.
+QuestLog is a personal game-tracking application inspired by RPG progression systems. Users can manage their gaming backlog, track progress, write personal notes, earn XP, and view statistics about their gaming habits.
 
-Users can browse games, view game details, create new games, update existing games and delete games through a GraphQL API.
+Built as a fullstack application using React, GraphQL, Apollo, Prisma, and PostgreSQL.
+
+---
 
 ## Features
 
-- View all games
-- View individual game details
-- Add new games
-- Edit existing games
-- Delete games
-- GraphQL API with Apollo Server
-- React Router navigation
-- Component-based React architecture
+### Game Management
+
+* Add new games
+* Edit existing games
+* Delete games
+* Track game status
+
+  * Not Started
+  * Playing
+  * Completed
+* Assign genres
+* Track supported platforms
+* Personal rating support
+
+### Quest Notes
+
+* Add notes to any game
+* Edit existing notes
+* Delete notes
+* Store notes in PostgreSQL
+
+### Progression System
+
+* Earn XP based on game progress
+* Character-style level progression
+* Visual progression overview
+
+### Statistics
+
+* Total games tracked
+* Completed games
+* Currently playing games
+* Not started games
+* Favorite genre
+
+---
 
 ## Tech Stack
 
 ### Frontend
 
-- React
-- React Router
-- Apollo Client
-- Vite
+* React
+* React Router
+* Apollo Client
+* Vite
 
 ### Backend
 
-- Node.js
-- Apollo Server
-- GraphQL
+* Node.js
+* Apollo Server
+* GraphQL
 
-### Development Tools
+### Database
 
-- Vite
-- Nodemon
+* PostgreSQL
+* Prisma ORM
 
-### Data Storage
-
-- In-memory database (`_db.js`)
+---
 
 ## Project Structure
 
@@ -45,39 +73,35 @@ Users can browse games, view game details, create new games, update existing gam
 frontend/
 ├── src/
 │   ├── components/
-│   │   ├── AddGameForm.jsx
-│   │   ├── GameCard.jsx
-│   │   ├── GameList.jsx
-│   │   └── Header.jsx
-│   │
 │   ├── pages/
-│   │   ├── Home.jsx
-│   │   ├── GameDetails.jsx
-│   │   └── EditGame.jsx
-│   │
 │   ├── graphql/
-│   │   ├── queries.js
-│   │   └── mutations.js
-│   │
-│   ├── App.jsx
-│   └── main.jsx
+│   ├── hooks/
+│   ├── utils/
+│   └── styles/
 │
 backend/
-├── index.js
+├── prisma/
+│   └── schema.prisma
+├── prismaClient.js
+├── prisma.config.ts
 ├── schema.js
-├── _db.js
+├── index.js
 └── package.json
 ```
 
+---
+
 ## Getting Started
 
-### Clone the repository
+### Clone the Repository
 
 ```bash
 git clone <repository-url>
 ```
 
-## Backend
+---
+
+## Backend Setup
 
 Navigate to the backend folder:
 
@@ -91,13 +115,29 @@ Install dependencies:
 npm install
 ```
 
-Start the development server:
+Create a `.env` file:
+
+```env
+DATABASE_URL="your_postgresql_connection_string"
+```
+
+Generate Prisma Client:
+
+```bash
+npx prisma generate
+```
+
+Run migrations:
+
+```bash
+npx prisma migrate dev
+```
+
+Start the backend:
 
 ```bash
 npm run dev
 ```
-
-The backend uses Nodemon during development to automatically restart the GraphQL server whenever source files change.
 
 GraphQL endpoint:
 
@@ -105,7 +145,9 @@ GraphQL endpoint:
 http://localhost:4000
 ```
 
-## Frontend
+---
+
+## Frontend Setup
 
 Navigate to the frontend folder:
 
@@ -119,7 +161,7 @@ Install dependencies:
 npm install
 ```
 
-Start the development server:
+Start the frontend:
 
 ```bash
 npm run dev
@@ -131,65 +173,56 @@ Frontend URL:
 http://localhost:5173
 ```
 
-## GraphQL Operations
-
-### Queries
-
-- `games`
-- `game(id)`
-- `reviews`
-- `review(id)`
-- `authors`
-- `author(id)`
-
-### Mutations
-
-- `addGame`
-- `updateGame`
-- `deleteGame`
+---
 
 ## Current Functionality
 
 ### Home Page
 
-- View all games
-- Add new games
-- Delete existing games
+* Browse all tracked games
+* Search games
+* Filter by platform and status
+* Add, edit, and delete games
+* View progression summary
 
 ### Game Details
 
-- View detailed information about a selected game
-- View associated reviews
+* View detailed game information
+* View XP rewards
+* Add, edit, and delete quest notes
 
-### Edit Game
+### Statistics Page
 
-- Update a game's title
-- Update supported platforms
+* View game library statistics
+* Track completion progress
+* Analyze favorite genres
 
-## Learning Goals
-
-This project was created to practice and learn:
-
-- React component architecture
-- React Router
-- Apollo Client
-- Apollo Server
-- GraphQL queries and mutations
-- CRUD operations
-- Frontend/backend integration
-- Fullstack JavaScript development
+---
 
 ## Future Improvements
 
-- PostgreSQL integration
-- User authentication
-- Add and manage reviews
-- Search and filtering
-- Game cover images
-- Pagination
-- AWS deployment
-- DynamoDB experimentation
-- Docker support
+### Planned
+
+* Milestones system
+* Achievement system
+* User authentication
+* Enhanced RPG-style progression
+
+### Nice to Have
+
+* Game cover artwork
+* Advanced statistics
+* Improved mobile responsiveness
+* Achievement badges
+* Additional customization options
+
+---
+
+## Screenshots
+
+Coming soon.
+
+---
 
 ## Author
 
