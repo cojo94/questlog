@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useQuery, useMutation } from "@apollo/client/react"
 import { GET_GAME } from "../graphql/queries"
-import { ADD_NOTE } from "../graphql/mutations"
+import { ADD_NOTE, DELETE_NOTE, UPDATE_NOTE } from "../graphql/mutations"
 import NoteCard from "../components/NoteCard"
 import AddNoteForm from "../components/AddNoteForm"
 import { getGameXP } from "../utils/xp"
@@ -14,6 +14,8 @@ function GameDetails() {
     })
 
     const [addNote] = useMutation(ADD_NOTE)
+    const [deleteNote] = useMutation(DELETE_NOTE)
+    const [updateNote] = useMutation(UPDATE_NOTE)
 
     const handleAddNote = ({ content }) => {
         addNote({
@@ -23,6 +25,20 @@ function GameDetails() {
                     gameId: id
                 }
             },
+            refetchQueries: [{ query: GET_GAME, variables: { id } }]
+        })
+    }
+
+    const handleDeleteNote = (noteId) => {
+        deleteNote({
+            variables: { id: noteId },
+            refetchQueries: [{ query: GET_GAME, variables: { id } }]
+        })
+    }
+
+    const handleUpdateNote = (noteId, content) => {
+        updateNote({
+            variables: { id: noteId, edits: { content } },
             refetchQueries: [{ query: GET_GAME, variables: { id } }]
         })
     }
@@ -61,7 +77,20 @@ function GameDetails() {
                     )}
 
                     {game.notes.map(note => (
-                        <NoteCard key={note.id} note={note} />
+                        <div key={note.id} className="note-item">
+                            <NoteCard note={note} />
+                            <button onClick={() => handleDeleteNote(note.id)}>
+                                Delete
+                            </button>
+                            <button onClick={() => {
+                                const newContent = prompt("Edit note content:", note.content)
+                                if (newContent !== null && newContent.trim() !== "") {
+                                    handleUpdateNote(note.id, newContent)
+                                }
+                            }}>
+                                Edit
+                            </button>
+                        </div>
                     ))}
                 </div>
             </section>

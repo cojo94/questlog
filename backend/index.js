@@ -30,16 +30,16 @@ const resolvers = {
     },
 
     Mutation: {
-        deleteGame: async (_, { id }) => {
-            return await prisma.game.delete({
-                where: { id }
-            })
-        },
         addGame: async (_, args) => {
             return await prisma.game.create({
                 data: {
                     ...args.game
                 }
+            })
+        },
+        deleteGame: async (_, { id }) => {
+            return await prisma.game.delete({
+                where: { id }
             })
         },
         updateGame: async (_, args) => {
@@ -54,7 +54,19 @@ const resolvers = {
                     ...args.note
                 }
             })
+        },
+        deleteNote: async (_, { id }) => {
+            return await prisma.note.delete({
+                where: { id }
+            })
+        },
+        updateNote: async (_, args) => {
+            return await prisma.note.update({
+                where: { id: args.id },
+                data: { ...args.edits }
+            })
         }
+
     }
 }
 

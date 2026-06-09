@@ -46,3 +46,24 @@ export const ADD_NOTE = gql`
     }
   }
 `
+
+export const DELETE_NOTE = gql`
+  mutation DeleteNote($id: ID!) {
+    deleteNote(id: $id) {
+      id
+    }
+  }
+`
+
+export const UPDATE_NOTE = gql`
+  mutation UpdateNote($id: ID!, $edits: EditNoteInput!) {
+    updateNote(id: $id, edits: $edits) {
+      id
+      content
+      game {
+        id
+        title
+      }
+    }
+  }
+`
