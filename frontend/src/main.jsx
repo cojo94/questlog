@@ -10,7 +10,7 @@ import { ApolloProvider } from "@apollo/client/react"
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: "http://localhost:4000"
+    uri: import.meta.env.VITE_GRAPHQL_API_URL || "http://localhost:4000"
   }),
   cache: new InMemoryCache()
 })
