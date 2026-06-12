@@ -2,7 +2,15 @@
 
 QuestLog is a personal game-tracking application inspired by RPG progression systems. Users can manage their gaming backlog, track progress, write personal notes, earn XP, and view statistics about their gaming habits.
 
-Built as a fullstack application using React, GraphQL, Apollo, Prisma, and PostgreSQL.
+Built as a full-stack application using React, GraphQL, Apollo Server, Prisma, and PostgreSQL, and deployed using Vercel and Render.
+
+---
+
+## Live Demo
+
+🔗 [Live Demo](https://questlog-cyan.vercel.app)
+
+QuestLog is deployed and publicly available. The frontend is hosted on Vercel, while the GraphQL backend and PostgreSQL database are hosted on Render.
 
 ---
 
@@ -48,22 +56,37 @@ Built as a fullstack application using React, GraphQL, Apollo, Prisma, and Postg
 ## Tech Stack
 
 ### Frontend
-
-* React
-* React Router
-* Apollo Client
-* Vite
+- React
+- Vite
+- Apollo Client
+- React Router
 
 ### Backend
-
-* Node.js
-* Apollo Server
-* GraphQL
+- Apollo Server
+- GraphQL
+- Prisma
 
 ### Database
+- PostgreSQL
 
-* PostgreSQL
-* Prisma ORM
+### Deployment
+- Vercel (Frontend)
+- Render (Backend)
+- Render PostgreSQL (Database)
+
+---
+
+## Architecture
+
+```text
+Frontend (React + Apollo Client)
+        ↓
+GraphQL API (Apollo Server)
+        ↓
+Prisma ORM
+        ↓
+PostgreSQL Database
+```
 
 ---
 
@@ -96,7 +119,7 @@ backend/
 ### Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/cojo94/questlog.git
 ```
 
 ---
