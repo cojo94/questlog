@@ -1,6 +1,6 @@
 function NoteCard({ note }) {
     return (
-        <div className="card note-card">
+        <div className="note-card">
             <p>{note.content}</p>
 
         </div>

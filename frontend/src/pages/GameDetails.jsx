@@ -53,23 +53,31 @@ function GameDetails() {
 
     return (
         <div className="container">
-            <h1>{game.title}</h1>
-
-            <p>
-                Platforms: {game.platform.join(", ")}
-            </p>
-            <p>
-                Status: {game.status}
-            </p>
-            <p>
-                Genre: {game.genre}
-            </p>
-            <p>
-                Personal Rating: {game.personalRating ? `${game.personalRating}/10` : "Not rated yet"}
-            </p>
-            <p>
-                Current XP: {getGameXP(game.status)} XP
-            </p>
+            <div className="game-header">
+                <h1>{game.title}</h1>
+            </div>
+            <div className="game-meta">
+                <div className="game-meta-item">
+                    <span className="game-meta-label">Platforms</span>
+                    <span className="game-meta-value">{game.platform.join(", ")}</span>
+                </div>
+                <div className="game-meta-item">
+                    <span className="game-meta-label">Status</span>
+                    <span className="game-meta-value">{game.status}</span>
+                </div>
+                <div className="game-meta-item">
+                    <span className="game-meta-label">Genre</span>
+                    <span className="game-meta-value">{game.genre}</span>
+                </div>
+                <div className="game-meta-item">
+                    <span className="game-meta-label">Rating</span>
+                    <span className="game-meta-value">{game.personalRating ? `${game.personalRating}/10` : "Not rated yet"}</span>
+                </div>
+                <div className="game-meta-item">
+                    <span className="game-meta-label">XP</span>
+                    <span className="game-meta-value">{getGameXP(game.status)} XP</span>
+                </div>
+            </div>
             <section className="details-section">
                 <h3>Quest Notes</h3>
 
@@ -94,17 +102,19 @@ function GameDetails() {
                     {game.notes.map(note => (
                         <div key={note.id} className="note-item">
                             <NoteCard note={note} />
-                            <button onClick={() => setNoteToDelete(note)}>
-                                Delete
-                            </button>
-                            <button onClick={() => {
-                                const newContent = prompt("Edit note content:", note.content)
-                                if (newContent !== null && newContent.trim() !== "") {
-                                    handleUpdateNote(note.id, newContent)
-                                }
-                            }}>
-                                Edit
-                            </button>
+                            <div className="note-actions">
+                                <button className="edit" onClick={() => {
+                                    const newContent = prompt("Edit note content:", note.content)
+                                    if (newContent !== null && newContent.trim() !== "") {
+                                        handleUpdateNote(note.id, newContent)
+                                    }
+                                }}>
+                                    Edit
+                                </button>
+                                <button className="delete" onClick={() => setNoteToDelete(note)}>
+                                    Delete
+                                </button>
+                            </div>
                         </div>
                     ))}
                 </div>

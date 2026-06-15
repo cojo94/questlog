@@ -94,14 +94,3 @@
 .details-section {
   margin-top: 32px;
 }
-
-.note-list {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  margin-top: 18px;
-}
-
-.note-card {
-  min-height: auto;
-}

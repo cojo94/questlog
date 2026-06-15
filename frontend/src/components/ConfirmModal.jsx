@@ -5,8 +5,12 @@ function ConfirmModal({ title, message, onConfirm, onCancel }) {
                 <h2>{title}</h2>
                 <p>{message}</p>
                 <div className="modal-actions">
-                    <button onClick={onCancel}>Cancel</button>
-                    <button onClick={onConfirm}>Confirm</button>
+                    <button className="modal-cancel" onClick={onCancel}>
+                        Cancel
+                    </button>
+                    <button className="modal-danger" onClick={onConfirm}>
+                        Confirm
+                    </button>
                 </div>
             </div>
         </div>

@@ -9,6 +9,8 @@
 @import './components/forms.css';
 @import './components/filters.css';
 @import './components/game-card.css';
+@import './components/notes.css';
 @import './pages/edit-page.css';
+@import './pages/game-details.css';
 @import './pages/stats.css';
 @import './responsive/mobile.css';
