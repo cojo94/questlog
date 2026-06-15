@@ -9,6 +9,7 @@ import StatsOverview from '../components/StatsOverview'
 import GameFilters from '../components/GameFilters'
 import { useGameFilters } from '../hooks/useGameFilters'
 import { useGameStats } from '../hooks/useGameStats'
+import ConfirmModal from '../components/ConfirmModal'
 
 function Home() {
     const { loading, error, data } = useQuery(GET_GAMES)
@@ -92,26 +93,15 @@ function Home() {
             )}
 
             {gameToDelete && (
-                <div className="modal-backdrop">
-                    <div className="modal">
-                        <h2>Delete Game</h2>
-
-                        <p>Are you sure you want to remove {gameToDelete.title} from your backlog?</p>
-
-                        <div className="modal-actions">
-                            <button className="modal-cancel" onClick={() => setGameToDelete(null)}>
-                                No
-                            </button>
-                            <button className="modal-danger" onClick={() => {
-                                handleDelete(gameToDelete.id)
-                                setGameToDelete(null)
-                            }}>
-                                Yes
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
+                <ConfirmModal
+                    title="Confirm Deletion"
+                    message={`Are you sure you want to delete "${gameToDelete.title}"?`}
+                    onConfirm={() => {
+                        handleDelete(gameToDelete.id)
+                        setGameToDelete(null)
+                    }}
+                    onCancel={() => setGameToDelete(null)}
+                />
             )}
 
             <GameFilters

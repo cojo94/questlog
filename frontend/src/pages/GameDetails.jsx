@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { useParams } from "react-router-dom"
 import { useQuery, useMutation } from "@apollo/client/react"
 import { GET_GAME } from "../graphql/queries"
@@ -5,6 +6,7 @@ import { ADD_NOTE, DELETE_NOTE, UPDATE_NOTE } from "../graphql/mutations"
 import NoteCard from "../components/NoteCard"
 import AddNoteForm from "../components/AddNoteForm"
 import { getGameXP } from "../utils/xp"
+import ConfirmModal from "../components/ConfirmModal"
 
 function GameDetails() {
     const { id } = useParams()
@@ -16,6 +18,7 @@ function GameDetails() {
     const [addNote] = useMutation(ADD_NOTE)
     const [deleteNote] = useMutation(DELETE_NOTE)
     const [updateNote] = useMutation(UPDATE_NOTE)
+    const [noteToDelete, setNoteToDelete] = useState(null)
 
     const handleAddNote = ({ content }) => {
         addNote({
@@ -70,6 +73,18 @@ function GameDetails() {
             <section className="details-section">
                 <h3>Quest Notes</h3>
 
+                {noteToDelete && (
+                    <ConfirmModal
+                        title="Confirm Delete"
+                        message={`Are you sure you want to delete ${noteToDelete.content.substring(0, 50)}...?`}
+                        onConfirm={() => {
+                            handleDeleteNote(noteToDelete.id)
+                            setNoteToDelete(null)
+                        }}
+                        onCancel={() => setNoteToDelete(null)}
+                    />
+                )}
+
                 <AddNoteForm onAddNote={handleAddNote} />
                 <div className="note-list">
                     {game.notes.length === 0 && (
@@ -79,7 +94,7 @@ function GameDetails() {
                     {game.notes.map(note => (
                         <div key={note.id} className="note-item">
                             <NoteCard note={note} />
-                            <button onClick={() => handleDeleteNote(note.id)}>
+                            <button onClick={() => setNoteToDelete(note)}>
                                 Delete
                             </button>
                             <button onClick={() => {
