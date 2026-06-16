@@ -61,6 +61,7 @@ function Home() {
 
     return (
         <div className="container">
+            <p>Track your games, earn XP and complete your backlog!</p>
             <ProgressionHero completedGames={stats.completedGames} playingGames={stats.playingGames} />
 
             <StatsOverview
@@ -70,9 +71,7 @@ function Home() {
                 notStartedGames={stats.notStartedGames}
             />
 
-            <button className="add-game-button" onClick={() => setIsAddModalOpen(true)}>
-                Add Game
-            </button>
+
 
             {isAddModalOpen && (
                 <div className="modal-backdrop" >
@@ -103,17 +102,26 @@ function Home() {
                     onCancel={() => setGameToDelete(null)}
                 />
             )}
+            <section className="collection-controls">
+                <div className="collection-controls-header">
+                    <h2>Game Library</h2>
+                </div>
+                <GameFilters
+                    searchTerm={searchTerm}
+                    setSearchTerm={setSearchTerm}
+                    platformFilter={platformFilter}
+                    setPlatformFilter={setPlatformFilter}
+                    statusFilter={statusFilter}
+                    setStatusFilter={setStatusFilter}
+                    clearFilters={clearFilters}
+                    platforms={platforms}
+                />
+                <button className="add-game-button" onClick={() => setIsAddModalOpen(true)}>
+                    {/* <span>+</span> */}
+                    <span>Add Game</span>
 
-            <GameFilters
-                searchTerm={searchTerm}
-                setSearchTerm={setSearchTerm}
-                platformFilter={platformFilter}
-                setPlatformFilter={setPlatformFilter}
-                statusFilter={statusFilter}
-                setStatusFilter={setStatusFilter}
-                clearFilters={clearFilters}
-                platforms={platforms}
-            />
+                </button>
+            </section>
 
             <GameList games={filteredGames} onDelete={setGameToDelete} />
         </div>

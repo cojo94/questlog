@@ -6,8 +6,8 @@ import { useGameStats } from '../hooks/useGameStats'
 export default function StatsPage() {
     const { loading, error, data } = useQuery(GET_GAMES)
 
-    if (loading) return <p>Loading...</p>
-    if (error) return <p>Error: {error.message}</p>
+    if (loading) return <h2>Loading...</h2>
+    if (error) return <h2>Error: {error.message}</h2>
 
     const games = data.games;
     const stats = useGameStats(games)
