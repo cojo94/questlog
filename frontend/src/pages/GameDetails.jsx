@@ -7,6 +7,7 @@ import NoteCard from "../components/NoteCard"
 import AddNoteForm from "../components/AddNoteForm"
 import { getGameXP } from "../utils/xp"
 import ConfirmModal from "../components/ConfirmModal"
+import EditNoteModal from "../components/EditNoteModal"
 
 function GameDetails() {
     const { id } = useParams()
@@ -19,6 +20,7 @@ function GameDetails() {
     const [deleteNote] = useMutation(DELETE_NOTE)
     const [updateNote] = useMutation(UPDATE_NOTE)
     const [noteToDelete, setNoteToDelete] = useState(null)
+    const [noteToEdit, setNoteToEdit] = useState(null)
 
     const handleAddNote = ({ content }) => {
         addNote({
@@ -96,19 +98,14 @@ function GameDetails() {
                 <AddNoteForm onAddNote={handleAddNote} />
                 <div className="note-list">
                     {game.notes.length === 0 && (
-                        <p>No notes yet</p>
+                        <p>No notes yet, add your first note!</p>
                     )}
 
                     {game.notes.map(note => (
                         <div key={note.id} className="note-item">
                             <NoteCard note={note} />
                             <div className="note-actions">
-                                <button className="edit" onClick={() => {
-                                    const newContent = prompt("Edit note content:", note.content)
-                                    if (newContent !== null && newContent.trim() !== "") {
-                                        handleUpdateNote(note.id, newContent)
-                                    }
-                                }}>
+                                <button className="edit" onClick={() => setNoteToEdit(note)}>
                                     Edit
                                 </button>
                                 <button className="delete" onClick={() => setNoteToDelete(note)}>
@@ -119,6 +116,17 @@ function GameDetails() {
                     ))}
                 </div>
             </section>
+            {noteToEdit && (
+                <EditNoteModal
+                    title="Edit Note"
+                    noteContent={noteToEdit.content}
+                    onClose={() => setNoteToEdit(null)}
+                    onSave={(newContent) => {
+                        handleUpdateNote(noteToEdit.id, newContent)
+                        setNoteToEdit(null)
+                    }}
+                />
+            )}
         </div>
     )
 }

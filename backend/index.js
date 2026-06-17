@@ -17,7 +17,8 @@ const resolvers = {
     Game: {
         notes: async (parent) => {
             return await prisma.note.findMany({
-                where: { gameId: parent.id }
+                where: { gameId: parent.id },
+                orderBy: { id: "desc" }
             })
         }
     },
