@@ -13,7 +13,7 @@ function GameCard({ game, onDelete, onEdit }) {
             <p className="status">
                 Status: {game.status}
             </p>
-            <p>
+            <p className="rating">
                 Personal Rating: {game.personalRating ? `${game.personalRating}/10` : "Not rated yet"}
             </p>
             <div className="actions">

@@ -10,6 +10,10 @@
   --border: rgba(255, 255, 255, 0.08);
   --shadow: rgba(0, 0, 0, 0.35);
   --accent: #8b9bb8;
+  --steel: #737985;
+  --steel-dark: #3d424a;
+  --steel-light: #9aa1ad;
+  --brass: #a8894f;
 
   /* Identity / progression */
   --xp-dark: #1a1024;

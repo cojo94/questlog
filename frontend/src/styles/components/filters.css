@@ -6,16 +6,36 @@
 
 .collection-controls-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 2rem;
   margin-bottom: 1.5rem;
 }
 
+.collection-controls-header::before,
+.collection-controls-header::after {
+  content: "";
+  flex: 1;
+  max-width: 200px;
+  height: 1px;
+
+  background: linear-gradient(90deg,
+      transparent,
+      var(--steel-light));
+}
+
+.collection-controls-header::after {
+  background: linear-gradient(90deg,
+      var(--steel-light),
+      transparent);
+}
+
 .collection-controls-header h2 {
   margin: 0;
-  font-size: 1.5rem;
+  font-family: "Cinzel", serif;
+  color: var(--steel-light);
 }
+
 
 /* Filters */
 
