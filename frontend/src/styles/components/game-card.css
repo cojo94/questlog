@@ -67,14 +67,16 @@
 .card h2 {
   color: var(--steel-light);
   margin-bottom: 10px;
-  font-family: "Cinzel", serif;
+  /* font-family: "Cinzel", serif; */
   letter-spacing: 0.03em;
 }
 
 
-.status .platform .rating {
-  font-family: "Cinzel", serif;
-}
+/* .status,
+.platform,
+.rating {
+  font-family: "Inter", sans-serif;
+} */
 
 .platform {
   font-size: 14px;
@@ -106,7 +108,7 @@
 
   font-size: 14px;
   font-weight: 700;
-  font-family: "Cinzel", serif;
+  /* font-family: "Cinzel", serif; */
 
   cursor: pointer;
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;

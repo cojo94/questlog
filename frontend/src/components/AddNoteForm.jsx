@@ -14,7 +14,7 @@ function AddNoteForm({ onAddNote }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="note-form" onSubmit={handleSubmit}>
             <div className="form-fields">
 
                 <textarea

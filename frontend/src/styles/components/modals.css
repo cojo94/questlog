@@ -28,7 +28,7 @@
 .modal-confirm {
   padding: 10px 16px;
   border: none;
-  border-radius: 10px;
+  border-radius: 0.25rem;
 
   background: var(--success);
   color: white;

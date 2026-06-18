@@ -17,8 +17,35 @@
 .game-meta-item {
     padding: 14px 16px;
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    border: 1px solid var(--steel);
+    border-radius: 0.25rem;
+    position: relative;
+}
+
+.game-meta-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.12),
+            transparent 45%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.game-meta-item::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 14px;
+    height: 14px;
+    border-top: 2px solid var(--brass);
+    border-right: 2px solid var(--brass);
+    opacity: 0.65;
+    pointer-events: none;
 }
 
 .game-meta-label {

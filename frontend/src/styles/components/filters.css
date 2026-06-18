@@ -21,19 +21,23 @@
 
   background: linear-gradient(90deg,
       transparent,
-      var(--steel-light));
+      var(--brass));
 }
 
 .collection-controls-header::after {
   background: linear-gradient(90deg,
-      var(--steel-light),
+      var(--brass),
       transparent);
 }
 
 .collection-controls-header h2 {
   margin: 0;
-  font-family: "Cinzel", serif;
+  /* font-family: "Cinzel", serif; */
   color: var(--steel-light);
+  letter-spacing: 0.05em;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 
@@ -50,15 +54,17 @@
 .filters input,
 .filters select {
   flex: 1;
+  border-radius: 0.25rem;
+  border: 1px solid var(--steel);
+  background: var(--surface);
 }
 
 .filters button {
   padding: 12px 18px;
 
-  border-radius: 10px;
-  border: 1px solid var(--border);
-
-  background: var(--surface-light);
+  border: 1px solid var(--steel);
+  border-radius: 0.25rem;
+  background: var(--surface);
   color: var(--text);
 
   font-weight: 700;

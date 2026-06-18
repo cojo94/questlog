@@ -26,8 +26,8 @@ textarea::placeholder {
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: var(--focus-border);
-  box-shadow: 0 0 0 3px var(--focus);
+  border-color: var(--brass);
+  box-shadow: 0 0 0 3px var(--brass);
   background: var(--surface);
 }
 
@@ -46,11 +46,20 @@ form {
   gap: 12px;
 
   background: var(--surface);
-  padding: 20px;
-  border-radius: 14px;
-  border: 1px solid var(--border);
+  padding: 15px;
+  border-radius: 0.25rem;
+  border: 1px solid var(--steel);
 
   margin-bottom: 28px;
+}
+
+.note-form .form-fields {
+  flex-direction: column;
+}
+
+.note-form button {
+  align-self: flex-start;
+  width: fit-content;
 }
 
 .form-fields {

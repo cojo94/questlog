@@ -12,6 +12,8 @@
   flex: 0 0 auto;
   font-size: 1.5rem;
   font-weight: 600;
+  color: var(--xp-end);
+
 }
 
 .xp-bar-wrapper {
