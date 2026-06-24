@@ -91,12 +91,12 @@
 
 .add-game-button {
   position: fixed;
-  right: max(2rem, calc((100vw - 1200px) / 2));
+  right: max(2rem, calc((100vw - 1200px) / 2 - 60px));
   bottom: 2rem;
   z-index: 50;
 
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
 
   display: flex;
@@ -107,7 +107,7 @@
   border: 2px solid var(--success);
   color: var(--success);
 
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;

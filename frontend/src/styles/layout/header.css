@@ -19,15 +19,43 @@
   transition: color 0.2s ease, opacity 0.2s ease;
 }
 
-.header a:hover {
+/* .header a:hover {
   color: var(--accent);
   opacity: 1;
-}
+} */
 
 .nav {
   margin-left: 40px;
   display: flex;
   gap: 20px;
+}
+
+.nav-link {
+  position: relative;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--brass);
+}
+
+.nav-link.active {
+  color: var(--brass);
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+
+  width: 100%;
+  height: 2px;
+
+  background: var(--brass);
 }
 
 .header-title {
@@ -37,4 +65,11 @@
   letter-spacing: 0.05rem;
   text-transform: uppercase;
   color: var(--steel-light);
+  transition: text-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+.header-title:hover {
+  text-shadow: 0 0 8px rgba(220, 230, 245, 0.4),
+    0 0 16px rgba(220, 230, 245, 0.2);
 }

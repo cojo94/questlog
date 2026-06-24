@@ -116,14 +116,12 @@ function Home() {
                     clearFilters={clearFilters}
                     platforms={platforms}
                 />
-                <button className="add-game-button" onClick={() => setIsAddModalOpen(true)}>
-                    {/* <span>+</span> */}
-                    <span>Add Game</span>
-
-                </button>
             </section>
 
             <GameList games={filteredGames} onDelete={setGameToDelete} />
+            <button className="add-game-button" onClick={() => setIsAddModalOpen(true)}>
+                <span>Add Game</span>
+            </button>
         </div>
     )
 }
