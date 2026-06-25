@@ -7,7 +7,7 @@ textarea {
   padding: 12px 16px;
 
   border: 1px solid transparent;
-  border-radius: 10px;
+  border-radius: 0.25rem;
 
   background: var(--surface-light);
   color: var(--text);
@@ -15,7 +15,7 @@ textarea {
   font-size: 14px;
   outline: none;
 
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, transform 0.12s ease;
 }
 
 input::placeholder,
@@ -94,7 +94,7 @@ form button {
   padding: 12px 20px;
 
   border: none;
-  border-radius: 10px;
+  border-radius: 0.25rem;
 
   background: var(--success);
   color: white;
@@ -102,7 +102,7 @@ form button {
   font-weight: 700;
   cursor: pointer;
 
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.12s ease;
 }
 
 form button:hover {

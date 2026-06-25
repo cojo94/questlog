@@ -1,21 +1,21 @@
 function StatsOverview({ totalGames, playingGames, completedGames, notStartedGames }) {
     return (
         <section className="game-meta stats-overview">
-            <article className="game-meta-item">
-                <span className="game-meta-label">Total</span>
-                <span className="game-meta-value"> {totalGames}</span>
+            <article className="stats-overview-card">
+                <p className="game-meta-label">Total</p>
+                <p className="game-meta-value">{totalGames}</p>
             </article>
-            <article className="game-meta-item">
-                <span className="game-meta-label">Playing</span>
-                <span className="game-meta-value"> {playingGames}</span>
+            <article className="stats-overview-card">
+                <p className="game-meta-label">Playing</p>
+                <p className="game-meta-value">{playingGames}</p>
             </article>
-            <article className="game-meta-item">
-                <span className="game-meta-label">Completed</span>
-                <span className="game-meta-value"> {completedGames}</span>
+            <article className="stats-overview-card">
+                <p className="game-meta-label">Completed</p>
+                <p className="game-meta-value">{completedGames}</p>
             </article>
-            <article className="game-meta-item">
-                <span className="game-meta-label">Not Started</span>
-                <span className="game-meta-value"> {notStartedGames}</span>
+            <article className="stats-overview-card">
+                <p className="game-meta-label">Not Started</p>
+                <p className="game-meta-value">{notStartedGames}</p>
             </article>
         </section>
     )
